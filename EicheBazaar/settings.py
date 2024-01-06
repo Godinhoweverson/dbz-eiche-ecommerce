@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dbz-eiche.heroku.app.com', 'localhost']
+ALLOWED_HOSTS = ['dbz-eiche-b8d414c8e346.herokuapp.com', 'localhost']
 
 
 # Application definition
