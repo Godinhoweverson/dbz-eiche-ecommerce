@@ -1,0 +1,87 @@
+<header class="header-container container">
+  <div id="nav-section">
+    <nav class="navbar navbar-expand-md navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">DBZ EICHE</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="nav-elements collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav text-center ms-auto">              
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="/">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/">Logout</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/"><i class="fas fa-shopping-cart"></i></a>  
+          </li>  
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="/">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/">Create account</a>  
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/"><i class="fas fa-shopping-bag"></i></a>  
+          </li>  
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+    </nav>
+  </div>
+
+</header>
+<div class="search-container">
+<div class="container">
+  <div class="title-heading text-center">
+    <h1>Empower Your Shopping Experience: Your Dreams, Our Deals!</h1>
+  </div>
+
+  <div class="text-center">
+    <form action="" class="search-form">
+      <input type="search" class="search-input" name="search">
+      <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+    </form>
+  </div>
+
+  <div class="categories-container">
+    <div class="row">
+      <div class="categories">
+        <ul class="list-inline text-center">
+          <li class="list-inline-item">Male</li>
+          <li class="list-inline-item">Woman</li>
+          <li class="list-inline-item">Accessories</li>
+          <li class="list-inline-item">Shoes</li>
+          <li class="list-inline-item">Others</li>
+          <button type="button" class="btn btn-outline-light dropdown-toggle dropdown-toggle-split btn-sm" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+          </ul>
+
+       
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
