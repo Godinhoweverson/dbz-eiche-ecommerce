@@ -61,10 +61,6 @@ h1, h4{
     font-family: var(--font-headings);
 }
 
-p {
-    font-size: 12px;
-}
-
 .navbar-nav {
     text-align: right;
 }
@@ -130,7 +126,7 @@ p {
 }
 
 .categories li{
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: var(--color-white);
     transform: scale(1);
     transition: all 300 ms ease-in-out;
@@ -139,6 +135,10 @@ p {
 .categories li:hover {
     transform: scale(1.02);
     box-shadow: -8px 8px 18px rgba(0, 0, 0, .1);
+}
+
+.btn-link{
+   color: var(--color-white)!important;
 }
 
 .box {
@@ -219,8 +219,8 @@ footer {
   font-size: 0.9rem;
 }
 
-a {
-  color: inherit;
+.footer-links a {
+  color: var(--color-white);
   text-decoration: none;
   transition: all 0.3s;
 }
@@ -238,3 +238,94 @@ a:hover, a:focus {
   background: #212529;
 }
 
+
+/* Details-Products */
+
+.main-details-container{
+    padding: var(--spacing-gutter-large);
+}
+
+.image-details{
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, .4);
+    transform: scale(1);
+    transition: all 300 ms ease-in-out;
+}
+
+.image-details:hover{
+    transform: scale(1.02);
+    box-shadow: -8px 8px 18px rgba(0, 0, 0, .1);
+}
+
+
+.description-product{
+    font-size: 1.50rem;  
+
+}
+
+
+/* Media queries */
+
+@media (max-width: 480px) {
+   .title-heading{
+    padding: 2rem 0 2rem 0 ;
+   }
+
+.search-form{
+    max-width: 24rem;
+}
+
+.categories li{
+    font-size: 0.75rem;
+}
+
+.box{
+    padding: 48px 5px 48px 5px;
+}
+
+.products-list {
+    max-width: 18rem;
+    max-height: fit-content;
+    margin: auto;
+    padding-bottom: 3rem;
+}
+
+.gap-2 {
+    gap: 0.5rem!important;
+    max-width: 70%;
+    margin: auto;
+}
+  }
+
+  @media (max-width: 400px) {
+    .main-details-container{
+        padding-left: .20rem;
+        padding-right: .20rem;
+    }
+
+    .title-heading h1{
+     font-size: 1.25rem;
+     
+    }
+
+    .search-container{
+        padding: 1rem 0.75rem 1rem 0.75rem;
+    }
+
+    .search-form{
+        max-width: 14rem;
+    }
+
+
+    .box h4 {
+        padding: 0;
+        font-size: 0.875rem;
+    }
+
+    .description-product{
+        font-size: 0.875rem;
+    }
+
+    .container-product-details h1 {
+        font-size: 1.50rem;
+    }
+}

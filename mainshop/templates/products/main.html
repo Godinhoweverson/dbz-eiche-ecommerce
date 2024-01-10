@@ -17,14 +17,14 @@
             <div class="col-md-4 col-4"> 
               <div class="text-center message-container">
                   <i class="fas fa-thumbs-up"></i>
-                  <h4>SECURE PAYMENTS</h4>
+                  <h4>PAYMENTS</h4>
                   <p>Shop Confidently with Secure Payments!</p>
               </div>
             </div>
             <div class="col-md-4 col-4"> 
               <div class="text-center message-container">
                   <i class="fas fa-undo-alt"></i>
-                  <h4>SIMPLE RETURN</h4>
+                  <h4>RETURN</h4>
                   <p>Easy Returns, Effortless Style!</p>
               </div>
             </div>
@@ -34,9 +34,9 @@
 
     <main class="main-content-container">
       <div class="main-content main-conten-list container pt-0">
-        <div class="products products-list">
+        <div class="products products-list rounded-2">
           <div class="product-image-container">
-            <img src="{% static '1584.jpg' %}" alt="">
+            <a href="{% url 'details-products' %}"><img class="w-100 rounded-2" src="{% static '1584.jpg' %}" alt=""></a>
           </div>
           <div class="product-title-container">
             <h3>Lorem ipsum dolor sit amet</h3>
@@ -49,134 +49,10 @@
           </div>
           <div class="d-grid gap-2 d-md-flex justify-content-md-center ">
             <button class="btn btn-outline-dark me-md-2 btn-sm px-4 " type="button"><i class="fas fa-shopping-bag"></i></button>
-            <button class="btn btn-outline-dark btn-sm px-3" type="button">View</button>
+            <a href="{% url 'details-products' %}"><button class="btn btn-outline-dark btn-sm px-3" type="button">View</button></a>
           </div>
         </div>
-        <div class="products products-list">
-          <div class="product-image-container">
-            <img src="{% static '1584.jpg' %}" alt="">
-          </div>
-          <div class="product-title-container">
-            <h3>Lorem ipsum dolor sit amet</h3>
-          </div>
-          <div class="product-price-container d-flex align-items-center justify-content-center">
-            <div class="row">
-              <p class="col-6">$15,99</p>
-              <p class="col-6">Jeans</p>
-            </div>
-          </div>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-center ">
-            <button class="btn btn-outline-dark me-md-2 btn-sm px-4 " type="button"><i class="fas fa-shopping-bag"></i></button>
-            <button class="btn btn-outline-dark btn-sm px-3" type="button">View</button>
-          </div>
-        </div>
-        <div class="products products-list">
-          <div class="product-image-container w-100">
-            <img class="w-100" src="{% static '1584.jpg' %}" alt="">
-          </div>
-          <div class="product-title-container">
-            <h3>Lorem ipsum dolor sit amet</h3>
-          </div>
-          <div class="product-price-container d-flex align-items-center justify-content-center">
-            <div class="row">
-              <p class="col-6">$15,99</p>
-              <p class="col-6">Jeans</p>
-            </div>
-          </div>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-center ">
-            <button class="btn btn-outline-dark me-md-2 btn-sm px-4 " type="button"><i class="fas fa-shopping-bag"></i></button>
-            <button class="btn btn-outline-dark btn-sm px-3" type="button">View</button>
-          </div>
-        </div>
-        <div class="products products-list">
-          <div class="product-image-container">
-            <img src="{% static '1584.jpg' %}" alt="">
-          </div>
-          <div class="product-title-container">
-            <h3>Lorem ipsum dolor sit amet</h3>
-          </div>
-          <div class="product-price-container d-flex align-items-center justify-content-center">
-            <div class="row">
-              <p class="col-6">$15,99</p>
-              <p class="col-6">Jeans</p>
-            </div>
-          </div>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-center ">
-            <button class="btn btn-outline-dark me-md-2 btn-sm px-4 " type="button"><i class="fas fa-shopping-bag"></i></button>
-            <button class="btn btn-outline-dark btn-sm px-3" type="button">View</button>
-          </div>
-        </div>
-        <div class="products products-list">
-          <div class="product-image-container">
-            <img src="{% static '1584.jpg' %}" alt="">
-          </div>
-          <div class="product-title-container">
-            <h3>Lorem ipsum dolor sit amet</h3>
-          </div>
-          <div class="product-price-container d-flex align-items-center justify-content-center">
-            <div class="row">
-              <p class="col-6">$15,99</p>
-              <p class="col-6">Jeans</p>
-            </div>
-          </div>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-center ">
-            <button class="btn btn-outline-dark me-md-2 btn-sm px-4 " type="button"><i class="fas fa-shopping-bag"></i></button>
-            <button class="btn btn-outline-dark btn-sm px-3" type="button">View</button>
-          </div>
-        </div>
-        <div class="products products-list">
-          <div class="product-image-container">
-            <img src="{% static '1584.jpg' %}" alt="">
-          </div>
-          <div class="product-title-container">
-            <h3>Lorem ipsum dolor sit amet</h3>
-          </div>
-          <div class="product-price-container d-flex align-items-center justify-content-center">
-            <div class="row">
-              <p class="col-6">$15,99</p>
-              <p class="col-6">Jeans</p>
-            </div>
-          </div>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-center ">
-            <button class="btn btn-outline-dark me-md-2 btn-sm px-4 " type="button"><i class="fas fa-shopping-bag"></i></button>
-            <button class="btn btn-outline-dark btn-sm px-3" type="button">View</button>
-          </div>
-        </div>
-        <div class="products products-list">
-          <div class="product-image-container">
-            <img src="{% static '1584.jpg' %}" alt="">
-          </div>
-          <div class="product-title-container">
-            <h3>Lorem ipsum dolor sit amet</h3>
-          </div>
-          <div class="product-price-container d-flex align-items-center justify-content-center">
-            <div class="row">
-              <p class="col-6">$15,99</p>
-              <p class="col-6">Jeans</p>
-            </div>
-          </div>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-center ">
-            <button class="btn btn-outline-dark me-md-2 btn-sm px-4 " type="button"><i class="fas fa-shopping-bag"></i></button>
-            <button class="btn btn-outline-dark btn-sm px-3" type="button">View</button>
-          </div>
-        </div>
-        <div class="products products-list">
-          <div class="product-image-container">
-            <img src="{% static '1584.jpg' %}" alt="">
-          </div>
-          <div class="product-title-container">
-            <h3>Lorem ipsum dolor sit amet</h3>
-          </div>
-          <div class="product-price-container d-flex align-items-center justify-content-center">
-            <div class="row">
-              <p class="col-6">$15,99</p>
-              <p class="col-6">Jeans</p>
-            </div>
-          </div>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-center ">
-            <button class="btn btn-outline-dark me-md-2 btn-sm px-4 " type="button"><i class="fas fa-shopping-bag"></i></button>
-            <button class="btn btn-outline-dark btn-sm px-3" type="button">View</button>
-          </div>
+      
         </div>
       </div>
     </main>
