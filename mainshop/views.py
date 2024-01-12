@@ -6,3 +6,6 @@ def main_page(request):
 
 def details_product(request):
     return render(request, 'products/details_product.html')
+
+def sign(request):
+    return render(request, 'products/sign.html')
