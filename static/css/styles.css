@@ -67,15 +67,19 @@ h1, h4{
 
 /* Search Container */
 .search-container {
-    background: rgb(20,0,36);
-    background: linear-gradient(90deg, rgba(20,0,36,1) 0%, rgba(134,0,255,1) 0%, rgba(147,29,208,1) 79%);
+    background-color: #212529;
     padding: var(--spacing-gutter-large);
     height: 25%;
 } 
 
 .title-heading{
     padding: var(--spacing-gutter-large);
-    color: var(--color-warning-light);
+}
+
+.title-heading h1 {
+    padding: var(--spacing-gutter-large);
+    color: var(--color-white);
+    font-size: 4rem;
 }
 .search-form {
     border: .2rem solid var(--color-debug-light);
