@@ -1,188 +1,31 @@
-{% include 'partials/head.html'%}
-{% include 'partials/header.html'%}
+{% extends 'global/base.html' %}
 {% load static %}
 
-
-  <body>
-    <div class="d-flex align-items-center">
-      <div class="container">
-          <div class="row box">
-            <div class="col-md-4 col-4"> 
-              <div class="text-center message-container">
-                  <i class="fas fa-truck"></i>
-                  <h4>DELIVERY</h4>
-                  <P>Style at Your Doorstep!</P>
-              </div>
-            </div>
-            <div class="col-md-4 col-4"> 
-              <div class="text-center message-container">
-                  <i class="fas fa-thumbs-up"></i>
-                  <h4>PAYMENTS</h4>
-                  <p>Shop Confidently with Secure Payments!</p>
-              </div>
-            </div>
-            <div class="col-md-4 col-4"> 
-              <div class="text-center message-container">
-                  <i class="fas fa-undo-alt"></i>
-                  <h4>RETURN</h4>
-                  <p>Easy Returns, Effortless Style!</p>
-              </div>
-            </div>
-          </div>
-      </div>
-    </div>
-
-    <main class="main-content-container">
-      <div class="main-content main-conten-list container pt-0">
-        <div class="products products-list rounded-2">
-          <div class="product-image-container">
-            <a href="{% url 'details-products' %}"><img class="w-100 rounded-2" src="{% static 'GP022O04E-A11@8.jpg' %}" alt=""></a>
-          </div>
-          <div class="product-title-container">
-            <h3>Lorem ipsum dolor sit amet</h3>
-          </div>
-          <div class="product-price-container d-flex align-items-center justify-content-center">
-            <div class="row">
-              <p class="col-6">$15,99</p>
-              <p class="col-6">Jeans</p>
-            </div>
-          </div>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-center ">
-            <button class="btn btn-outline-dark me-md-2 btn-sm px-4 " type="button"><i class="fas fa-shopping-bag"></i></button>
-            <a href="{% url 'details-products' %}"><button class="btn btn-outline-dark btn-sm px-3" type="button">View</button></a>
+{% block content %}
+  <div class="main-content main-conten-list container pt-0">
+    {% for product in products %}
+      <div class="products products-list rounded-2">
+        <div class="product-image-container">
+            <a href="{% url 'details-products' product_id=product.id %}">
+                <img class="w-100 rounded-2" src="{{ product.image.url }}" alt="{{ product.product_display_name }}">
+            </a>
+        </div>
+        <div class="product-title-container">
+          <h3>{{ product.product_display_name }}</h3>
+        </div>
+        <div class="product-price-container d-flex align-items-center justify-content-center">
+          <div class="row">
+            <p class="col-6">${{ product.price }}</p>
+            <p class="col-6">{{ product.season }}</p>
           </div>
         </div>
-        <div class="products products-list rounded-2">
-          <div class="product-image-container">
-            <a href="{% url 'details-products' %}"><img class="w-100 rounded-2" src="{% static 'GP022O04E-A11@8.jpg' %}" alt=""></a>
-          </div>
-          <div class="product-title-container">
-            <h3>Lorem ipsum dolor sit amet</h3>
-          </div>
-          <div class="product-price-container d-flex align-items-center justify-content-center">
-            <div class="row">
-              <p class="col-6">$15,99</p>
-              <p class="col-6">Jeans</p>
-            </div>
-          </div>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-center ">
-            <button class="btn btn-outline-dark me-md-2 btn-sm px-4 " type="button"><i class="fas fa-shopping-bag"></i></button>
-            <a href="{% url 'details-products' %}"><button class="btn btn-outline-dark btn-sm px-3" type="button">View</button></a>
-          </div>
-        </div>
-        <div class="products products-list rounded-2">
-          <div class="product-image-container">
-            <a href="{% url 'details-products' %}"><img class="w-100 rounded-2" src="{% static 'GP022O04E-A11@8.jpg' %}" alt=""></a>
-          </div>
-          <div class="product-title-container">
-            <h3>Lorem ipsum dolor sit amet</h3>
-          </div>
-          <div class="product-price-container d-flex align-items-center justify-content-center">
-            <div class="row">
-              <p class="col-6">$15,99</p>
-              <p class="col-6">Jeans</p>
-            </div>
-          </div>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-center ">
-            <button class="btn btn-outline-dark me-md-2 btn-sm px-4 " type="button"><i class="fas fa-shopping-bag"></i></button>
-            <a href="{% url 'details-products' %}"><button class="btn btn-outline-dark btn-sm px-3" type="button">View</button></a>
-          </div>
-        </div>
-        <div class="products products-list rounded-2">
-          <div class="product-image-container">
-            <a href="{% url 'details-products' %}"><img class="w-100 rounded-2" src="{% static 'GP022O04E-A11@8.jpg' %}" alt=""></a>
-          </div>
-          <div class="product-title-container">
-            <h3>Lorem ipsum dolor sit amet</h3>
-          </div>
-          <div class="product-price-container d-flex align-items-center justify-content-center">
-            <div class="row">
-              <p class="col-6">$15,99</p>
-              <p class="col-6">Jeans</p>
-            </div>
-          </div>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-center ">
-            <button class="btn btn-outline-dark me-md-2 btn-sm px-4 " type="button"><i class="fas fa-shopping-bag"></i></button>
-            <a href="{% url 'details-products' %}"><button class="btn btn-outline-dark btn-sm px-3" type="button">View</button></a>
-          </div>
-        </div>
-        <div class="products products-list rounded-2">
-          <div class="product-image-container">
-            <a href="{% url 'details-products' %}"><img class="w-100 rounded-2" src="{% static 'GP022O04E-A11@8.jpg' %}" alt=""></a>
-          </div>
-          <div class="product-title-container">
-            <h3>Lorem ipsum dolor sit amet</h3>
-          </div>
-          <div class="product-price-container d-flex align-items-center justify-content-center">
-            <div class="row">
-              <p class="col-6">$15,99</p>
-              <p class="col-6">Jeans</p>
-            </div>
-          </div>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-center ">
-            <button class="btn btn-outline-dark me-md-2 btn-sm px-4 " type="button"><i class="fas fa-shopping-bag"></i></button>
-            <a href="{% url 'details-products' %}"><button class="btn btn-outline-dark btn-sm px-3" type="button">View</button></a>
-          </div>
-        </div>
-        <div class="products products-list rounded-2">
-          <div class="product-image-container">
-            <a href="{% url 'details-products' %}"><img class="w-100 rounded-2" src="{% static 'GP022O04E-A11@8.jpg' %}" alt=""></a>
-          </div>
-          <div class="product-title-container">
-            <h3>Lorem ipsum dolor sit amet</h3>
-          </div>
-          <div class="product-price-container d-flex align-items-center justify-content-center">
-            <div class="row">
-              <p class="col-6">$15,99</p>
-              <p class="col-6">Jeans</p>
-            </div>
-          </div>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-center ">
-            <button class="btn btn-outline-dark me-md-2 btn-sm px-4 " type="button"><i class="fas fa-shopping-bag"></i></button>
-            <a href="{% url 'details-products' %}"><button class="btn btn-outline-dark btn-sm px-3" type="button">View</button></a>
-          </div>
-        </div>
-        <div class="products products-list rounded-2">
-          <div class="product-image-container">
-            <a href="{% url 'details-products' %}"><img class="w-100 rounded-2" src="{% static 'GP022O04E-A11@8.jpg' %}" alt=""></a>
-          </div>
-          <div class="product-title-container">
-            <h3>Lorem ipsum dolor sit amet</h3>
-          </div>
-          <div class="product-price-container d-flex align-items-center justify-content-center">
-            <div class="row">
-              <p class="col-6">$15,99</p>
-              <p class="col-6">Jeans</p>
-            </div>
-          </div>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-center ">
-            <button class="btn btn-outline-dark me-md-2 btn-sm px-4 " type="button"><i class="fas fa-shopping-bag"></i></button>
-            <a href="{% url 'details-products' %}"><button class="btn btn-outline-dark btn-sm px-3" type="button">View</button></a>
-          </div>
-        </div>
-        <div class="products products-list rounded-2">
-          <div class="product-image-container">
-            <a href="{% url 'details-products' %}"><img class="w-100 rounded-2" src="{% static 'GP022O04E-A11@8.jpg' %}" alt=""></a>
-          </div>
-          <div class="product-title-container">
-            <h3>Lorem ipsum dolor sit amet</h3>
-          </div>
-          <div class="product-price-container d-flex align-items-center justify-content-center">
-            <div class="row">
-              <p class="col-6">$15,99</p>
-              <p class="col-6">Jeans</p>
-            </div>
-          </div>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-center ">
-            <button class="btn btn-outline-dark me-md-2 btn-sm px-4 " type="button"><i class="fas fa-shopping-bag"></i></button>
-            <a href="{% url 'details-products' %}"><button class="btn btn-outline-dark btn-sm px-3" type="button">View</button></a>
-          </div>
-        </div>
-      
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center ">
+          <button class="btn btn-outline-dark me-md-2 btn-sm px-4 " type="button"><i class="fas fa-shopping-bag"></i></button>
+          <a href="{% url 'details-products' product_id=product.id %}"><button class="btn btn-outline-dark btn-sm px-3" type="button">View</button></a>
         </div>
       </div>
-    </main>
-    {% include 'partials/footer.html'%}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-  </body>
-</html>
+    {% endfor %}
+  </div> 
+{% endblock content %}
+
+{% include 'global/partials/footer.html'%}

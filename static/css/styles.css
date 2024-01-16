@@ -129,16 +129,21 @@ h1, h4{
     padding: var(--spacing-gutter-medium);
 }
 
-.categories li{
-    font-size: 1rem;
-    color: var(--color-white);
+.categories li a{
+    font-size: 1.25rem;
+    color: var(--color-black);
     transform: scale(1);
     transition: all 300 ms ease-in-out;
 }
 
-.categories li:hover {
+.categories li a:hover {
     transform: scale(1.02);
     box-shadow: -8px 8px 18px rgba(0, 0, 0, .1);
+}
+
+.all-categories{
+    color: var(--color-white)!important;
+    font-size: 1rem;
 }
 
 .btn-link{

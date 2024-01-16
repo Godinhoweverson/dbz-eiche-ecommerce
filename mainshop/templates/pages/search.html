@@ -1,0 +1,36 @@
+{% extends 'global/base.html' %}
+
+{% block title %}{{ page_title }}{% endblock title %}
+
+{% block content %}
+<main class="main-content-container">
+    <div class="main-content main-conten-list container pt-0">
+        {% for product in products %}
+        <div class="products products-list rounded-2">
+            <div class="product-image-container">
+                <a href="{% url 'details-products' product_id=product.id %}">
+                    <img class="w-100 rounded-2" src="{{ product.image.url }}" alt="{{ product.product_display_name }}">
+                </a>
+            </div>
+            <div class="product-title-container">
+            <h3>{{ product.product_display_name }}</h3>
+            </div>
+            <div class="product-price-container d-flex align-items-center justify-content-center">
+            <div class="row">
+                <p class="col-6">${{ product.price }}</p>
+                <p class="col-6">{{ product.season }}</p>
+            </div>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center ">
+            <button class="btn btn-outline-dark me-md-2 btn-sm px-4 " type="button"><i class="fas fa-shopping-bag"></i></button>
+            <a href="{% url 'details-products' product_id=product.id %}"><button class="btn btn-outline-dark btn-sm px-3" type="button">View</button></a>
+            </div>
+        </div>
+        {% empty %}
+            <div class="center m-y vh-50">
+                <h1>No products found here 🥲</h1>
+            </div>
+        {% endfor %}
+    </div>
+</main>
+{% endblock content %}

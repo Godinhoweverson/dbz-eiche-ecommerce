@@ -1,8 +1,9 @@
 from django.urls import path
-from mainshop.views import main_page, details_product, sign
+from . import views
 
 urlpatterns = [
-    path('', main_page, name='main_page'),
-    path('details', details_product, name='details-products'),
-    path('sign', sign, name='sign'),
+    path('', views.main_page, name='main_page'),
+    path('products/search/', views.search, name='search'),
+    path('category/<int:category_id>/', views.main_page, name='main_page_category'),
+    path('details/<int:product_id>/', views.details_products, name='details-products'),
 ]
