@@ -19,9 +19,9 @@
             <p class="col-6">{{ product.season }}</p>
           </div>
         </div>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-center ">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center btn-container ">
           <button class="btn btn-outline-dark me-md-2 btn-sm px-4 " type="button"><i class="fas fa-shopping-bag"></i></button>
-          <a href="{% url 'details-products' product_id=product.id %}"><button class="btn btn-outline-dark btn-sm px-3" type="button">View</button></a>
+          <a href="{% url 'details-products' product_id=product.id %}"><button class="btn btn-outline-dark btn-sm px-3 view-btn" type="button">View</button></a>
         </div>
       </div>
     {% endfor %}

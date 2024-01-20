@@ -187,7 +187,6 @@ h1, h4{
 }
 .products-list {
     max-width: 24rem;
-    max-height: 30rem;
 }
 
 .products-list:hover {
@@ -215,7 +214,20 @@ h1, h4{
 }
 
 
+/* Pagination */
+ .pag-item a{
+    font-size: 1.5rem;
+    padding: 5px;
+    color: #212529;
+ }
 
+ .current_page{
+    font-weight: bold;
+ }
+
+.main-pagination-content{
+    padding: 3rem;
+ }
 /* Footer */
 
 footer {
@@ -254,6 +266,10 @@ a:hover, a:focus {
     padding: var(--spacing-gutter-large);
 }
 
+.container-product-details {
+    padding: var(--spacing-gutter-medium);
+}
+
 .image-details{
     box-shadow: -5px 5px 10px rgba(0, 0, 0, .4);
     transform: scale(1);
@@ -265,13 +281,17 @@ a:hover, a:focus {
     box-shadow: -8px 8px 18px rgba(0, 0, 0, .1);
 }
 
-
-.description-product{
-    font-size: 1.50rem;  
-
+.btn-back-home{
+    padding-left: 3rem;
 }
 
+/* Update-section */
 
+
+.update-section{
+max-width: 100%;
+max-height: 30rem;
+}
 
 
 /* Sign Form */
@@ -281,6 +301,27 @@ a:hover, a:focus {
 }
 
 /* Media queries */
+
+@media (max-width: 900px){
+    .container-product-details {
+        padding: 0;
+    }
+
+    .btn-back-home{
+        padding: 1rem 0;
+    }
+}
+
+@media (max-width: 767px){
+    .view-btn{
+        width: 100%;
+    }
+
+    .btn-container{
+        padding: 10px;
+    }
+}
+
 
 @media (max-width: 480px) {
    .title-heading{
@@ -311,6 +352,22 @@ a:hover, a:focus {
     max-width: 70%;
     margin: auto;
 }
+
+.btn-back-home{
+    padding: 1rem 0;
+}
+
+.view-btn{
+    width: 100%;
+}
+
+.pag-item a{
+    font-size: 1rem;
+ }
+
+.pagination_content{
+    padding: 0!important;
+ }
   }
 
   @media (max-width: 400px) {
@@ -345,4 +402,19 @@ a:hover, a:focus {
     .container-product-details h1 {
         font-size: 1.50rem;
     }
+
+    .btn-back-home{
+        padding-left: 0;
+    }
+
+
+    .pag-item a{
+        font-size: 0.75rem;
+        padding: 2px;
+       
+     }
+
+    .main-pagination-content{
+        padding: 0 0 0.75rem 0;
+     }
 }

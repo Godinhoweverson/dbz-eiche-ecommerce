@@ -1,0 +1,29 @@
+{% if products.has_other_pages %}
+    <div class="d-flex align-items-center  main-pagination-content">
+        <div class="pagination_content container">
+            <div class="row">
+                <div class="col-12 text-center pag-item">
+                    {% if pagination_range.current_page != 1 %}
+                        <a class="text-decoration-none" href="?page={{ paginator_range.prev_page}}"><i class="fa-solid fa-angle-left"></i> Prev</a>
+                    {% endif %} 
+                    {% if pagination_range.first_page_out_of_range %}
+                    <a class="text-decoration-none" href="?page=1">1</a>
+                    <span><i class="fa-solid fa-ellipsis"></i></span>
+                    {% endif %}
+                    
+                    {% for page in pagination_range.pagination %}
+                        <a class="text-decoration-none {% if pagination_range.current_page == page %}current_page{% endif %}" href="?page={{ page }}">{{ page }}</a>
+                    {% endfor %}
+        
+                    {% if pagination_range.last_page_out_of_range %}
+                    <span><i class="fa-solid fa-ellipsis"></i></span>
+                    <a class="text-decoration-none" href="?page={{ pagination_range.total_pages }}">{{ pagination_range.total_pages }}</a>
+                    {% endif %} 
+                    {% if pagination_range.current_page != 10 %}
+                        <a class="text-decoration-none" href="?page={{ pagination_range.next_page }}">Next <i class="fa-solid fa-angle-right"></i></a> 
+                    {% endif %} 
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

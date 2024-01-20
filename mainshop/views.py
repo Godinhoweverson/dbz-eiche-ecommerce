@@ -2,7 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.http.response import Http404
 from .models import Category, Product
 from django.db.models import Q
-
+from django.core.paginator import Paginator
+from utils.pagination import make_pagination_range
 
 def main_page(request, category_id=None):
     categories = Category.objects.all()
@@ -11,12 +12,26 @@ def main_page(request, category_id=None):
         products = Product.objects.filter(category__id=category_id).order_by('-id')
     else:
         products = Product.objects.all().order_by('-id')
+ 
+    try:
+        current_page = int(request.GET.get('page', 1))
+    except ValueError:
+        current_page = 1
+
+    paginator = Paginator(products, 8)
+    page_obj = paginator.get_page(current_page)
     
+    paginator_range = make_pagination_range(
+        paginator.page_range,
+        4,
+        current_page
+    )
+
     return render(request, 'products/main.html', context={
         'categories': categories, 
-        'products': products,
-        })
-
+        'products': page_obj,
+        'pagination_range': paginator_range
+    })
 
 def details_products(request, product_id):
     categories = Category.objects.all()
@@ -42,3 +57,7 @@ def search(request):
         'products': products,
         'categories': categories,
     })
+
+
+def create_account(request):
+    return render(request, 'products/create_account.html')

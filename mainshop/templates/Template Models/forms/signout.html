@@ -1,0 +1,21 @@
+{% include 'global/partials/head.html'%}
+{% include 'global/partials/header.html'%}
+{% load static %}
+
+<div class="sign-container">
+    <div class="container">
+        <div class="text-center p-5">
+            <H1>Log out</H1>
+        </div>
+        <p class="text-center p-5">Are you sure you want to sign out?</p>
+        <form class="w-50 mx-auto">
+            <div class="form-floating mb-3">
+                <input type="hidden" name="name" value="" />
+            </div>
+            <button type="submit" class="btn btn-dark w-100">Sign out</button>
+        </form>
+    </div>
+</div>
+
+
+{% include 'global/partials/footer.html'%}
