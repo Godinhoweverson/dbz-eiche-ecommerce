@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 class Category(models.Model):
     display_categories = models.CharField(max_length=25)
@@ -21,5 +21,22 @@ class Product(models.Model):
 
     def __str__(self):
         return self.product_display_name
+
+
+class Comments(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    email = models.EmailField(max_length=50, blank=True, null=True)
+    text = models.TextField(max_length=200)
+    approved_comment = models.BooleanField(default=True)
+    created_at = models.DateField(auto_now=True)
+    likes = models.ManyToManyField(User, related_name='like_comment', blank=True)
+
+    def __str__(self):
+        return f'{self.user.username} - {self.created_at}'
+
+    def likes_count(self):
+        return self.likes.count()
+
+
 
 

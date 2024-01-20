@@ -2,6 +2,8 @@
 {% load static %}
 
 {% block content %}
+{% include 'global/partials/search.html' %}
+{% include 'global/partials/information_section.html' %}
   <div class="main-content main-conten-list container pt-0">
     {% for product in products %}
       <div class="products products-list rounded-2">

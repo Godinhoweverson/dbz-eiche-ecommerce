@@ -294,11 +294,13 @@ max-height: 30rem;
 }
 
 
-/* Sign Form */
+/*  Forms */
 
-.sign-container{
-    padding: var(--spacing-gutter-medium);
+.signout-container, .sigin-container{
+    height: 70vh;
+    padding: var(--spacing-gutter-large);
 }
+
 
 /* Media queries */
 

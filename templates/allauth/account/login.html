@@ -1,0 +1,49 @@
+{% extends 'global/base.html' %}
+{% load i18n %}
+{% load account socialaccount %}
+{% load widget_tweaks %}
+{% load static %}
+
+
+
+{% block content %}
+<div class="authentificator-container sigin-container">
+  <div class="container pb-5">
+    <div class="row">
+      <div class="text-center  p-5">
+        <h1>{% trans "Sign In" %}</h1>
+      </div>
+    </div>
+    <div class="row">
+      <form class="login w-50 mx-auto" method="POST" action="{% url 'account_login' %}">
+        <div class="mb-3">
+          {% csrf_token %}
+          {% for field in form %}
+          <p>
+              {{ field.label_tag }}
+              {% if field.field.widget.input_type != "checkbox" %}
+              {{ field|add_class:"form-control" }}
+              {{ field.errors }}
+              {% else %}
+              {{ field }}
+              {% endif %}
+          </p>
+          {% endfor %}
+          
+          {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
+          {% endif %}
+          
+          <div class="mb-3 form-check">
+            <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+          </div>
+          
+          <button class="btn btn-dark w-100" type="submit">{% trans "Sign In" %}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'global/base.html' %}
+{% load i18n %}
+{% load account socialaccount %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+<div class="authentificator-container">
+  <div class="container pb-4">
+    <div class="text-center p-4">
+      <h1>{% trans "Sign Up" %}</h1>
+    </div>
+    <div class="text-center p-4">
+      <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+    </div>
+    <div class="row">
+      <form class="signup w-50 mx-auto" id="signup_form" method="post" action="{% url 'account_signup' %}">
+        <div class="mb-3">
+          {% csrf_token %}
+          {% for field in form %}
+                  <p>
+                      {{ field.label_tag }}
+                      {% if field.field.widget.input_type != "checkbox" %}
+                      {{ field|add_class:"form-control" }}
+                      {{ field.errors }}
+                      {% else %}
+                      {{ field }}
+                      {% endif %}
+                  </p>
+                  {% endfor %}
+          {% if redirect_field_value %}
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+          {% endif %}
+          <button class="btn btn-dark w-100"  type="submit">{% trans "Sign Up" %} &raquo;</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
