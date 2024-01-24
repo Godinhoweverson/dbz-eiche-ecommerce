@@ -2,6 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Category(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'Categories'
+
     display_categories = models.CharField(max_length=25)
 
     def __str__(self):
@@ -23,16 +27,19 @@ class Product(models.Model):
         return self.product_display_name
 
 
-class Comments(models.Model):
+class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     email = models.EmailField(max_length=50, blank=True, null=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, default=1)
     text = models.TextField(max_length=200)
     approved_comment = models.BooleanField(default=True)
     created_at = models.DateField(auto_now=True)
     likes = models.ManyToManyField(User, related_name='like_comment', blank=True)
 
     def __str__(self):
-        return f'{self.user.username} - {self.created_at}'
+        if self.user:
+            return f'Comment {self.text} by {self.user.username}'
+        return f'Comment {self.text} by Anonymous'
 
     def likes_count(self):
         return self.likes.count()

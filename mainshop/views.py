@@ -1,9 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http.response import Http404
-from .models import Category, Product
+from mainshop.models import Category, Product, Comment
+from .forms import CommentForm
 from django.db.models import Q
 from django.core.paginator import Paginator
 from utils.pagination import make_pagination_range
+
 
 def main_page(request, category_id=None):
     categories = Category.objects.all()
@@ -36,7 +38,33 @@ def main_page(request, category_id=None):
 def details_products(request, product_id):
     categories = Category.objects.all()
     product = get_object_or_404(Product, pk=product_id)
-    return render(request, 'products/details_product.html', {'product': product, 'categories': categories,})
+    comments = product.comment_set.all().order_by('created_at')
+
+    paginator = Paginator(comments, 2)
+    page = request.GET.get('page')
+    comments = paginator.get_page(page)
+
+    form = CommentForm()
+
+    print("Request Method:", request.method)
+    if request.method == "POST":
+        print("Inside POST block") 
+        if request.user.is_authenticated:
+            form = CommentForm(request.POST)
+            print("Form is bound:", form.is_bound) 
+            if form.is_valid():
+                comment = form.save(commit=False)
+                comment.product = product
+                comment.user = request.user
+                comment.save()
+                print("Comment saved successfully")  
+                return redirect('details_products', product_id=product.id)
+            else:
+                print("Form has errors:", form.errors)  
+        else:
+            return redirect('account_login')
+       
+    return render(request, 'products/details_product.html', {'product': product, 'categories': categories, 'form': form, 'comments': comments})
 
 
 def search(request):
@@ -58,6 +86,3 @@ def search(request):
         'categories': categories,
     })
 
-
-def create_account(request):
-    return render(request, 'products/create_account.html')

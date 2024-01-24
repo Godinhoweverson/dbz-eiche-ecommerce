@@ -33,7 +33,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['dbz-eiche-b8d414c8e346.herokuapp.com', 'localhost', '8000-godinhoweve-dbzeicheeco-a7zpjf6y18f.ws-eu107.gitpod.io']
 
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-godinhoweve-dbzeicheeco-a7zpjf6y18f.ws-eu107.gitpod.io',
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -49,10 +51,15 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'widget_tweaks',
+    'crispy_forms',
+    'crispy_bootstrap5', 
 
     #other
     'storages',
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -62,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'EicheBazaar.urls'
@@ -72,6 +80,7 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'base-templates'),
             os.path.join(BASE_DIR, 'templates', 'allauth'),
+            os.path.join(BASE_DIR, 'EicheBazaar/templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {

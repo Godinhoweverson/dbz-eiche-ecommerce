@@ -6,9 +6,9 @@
 {% include 'global/partials/information_section.html' %}
   <div class="main-content main-conten-list container pt-0">
     {% for product in products %}
-      <div class="products products-list rounded-2">
+      <div class="products products-list rounded-2 mx-auto">
         <div class="product-image-container">
-            <a href="{% url 'details-products' product_id=product.id %}">
+            <a href="{% url 'details_products' product_id=product.id %}">
                 <img class="w-100 rounded-2" src="{{ product.image.url }}" alt="{{ product.product_display_name }}">
             </a>
         </div>
@@ -23,7 +23,7 @@
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-center btn-container ">
           <button class="btn btn-outline-dark me-md-2 btn-sm px-4 " type="button"><i class="fas fa-shopping-bag"></i></button>
-          <a href="{% url 'details-products' product_id=product.id %}"><button class="btn btn-outline-dark btn-sm px-3 view-btn" type="button">View</button></a>
+          <a href="{% url 'details_products' product_id=product.id %}"><button class="btn btn-outline-dark btn-sm px-3 view-btn" type="button">View</button></a>
         </div>
       </div>
     {% endfor %}

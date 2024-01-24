@@ -57,7 +57,7 @@ body {
     margin: 0 auto;
 }
 
-h1, h4{
+h1, h2, h3, h4{
     font-family: var(--font-headings);
 }
 
@@ -285,6 +285,30 @@ a:hover, a:focus {
     padding-left: 3rem;
 }
 
+/* Reviews */
+
+
+
+.review-main-container {
+    padding: 0 6.25rem 0 6.25rem;
+}
+
+.pagination-review{
+ padding: 4rem 4rem 0 4rem;
+}
+
+.pagination-review a, .current{
+    font-size: 1rem;
+    color: #212529;
+    padding: .30rem;
+   }
+
+
+.textarea {
+    height: 8rem;
+  
+}
+   
 /* Update-section */
 
 
@@ -315,12 +339,25 @@ max-height: 30rem;
 }
 
 @media (max-width: 767px){
+    .title-heading{
+        padding: 64px 0 64px 0;
+    }
+
+    .title-heading h1{
+        padding: 2rem 0 2rem 0;
+        font-size: 3rem;
+    }
+    
     .view-btn{
         width: 100%;
     }
 
     .btn-container{
         padding: 10px;
+    }
+
+    .review-main-container {
+        padding: 0;
     }
 }
 
@@ -341,6 +378,7 @@ max-height: 30rem;
 .box{
     padding: 48px 5px 48px 5px;
 }
+
 
 .products-list {
     max-width: 18rem;
