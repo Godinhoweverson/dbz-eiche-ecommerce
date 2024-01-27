@@ -52,11 +52,12 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'widget_tweaks',
     'crispy_forms',
-    'crispy_bootstrap5', 
-
+    'crispy_bootstrap5',
+    'cart',
     #other
     'storages',
 ]
+
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
@@ -80,7 +81,7 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'base-templates'),
             os.path.join(BASE_DIR, 'templates', 'allauth'),
-            os.path.join(BASE_DIR, 'EicheBazaar/templates'),
+            os.path.join(BASE_DIR, 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {

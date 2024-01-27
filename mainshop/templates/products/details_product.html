@@ -1,36 +1,47 @@
 {% extends 'global/base.html' %}
 {% load static %}
 
+
+
 {% block content %}
-  <div class="main-details-container d-flex align-items-center w-100">
-    <div class="container sub-container h-100">
-        <div class="row h-100">
-            <div class="col-12 col-md-6 h-100"> 
-              <div class="text-center h-50">
-                <img class="w-100 h-100 image-details rounded" src="{{ product.image.url }}" alt="{{ product.product_display_name }}">
-              </div>
-            </div>
-            <div class="col-12 col-md-6 "> 
-              <div class="text-start btn-back-home">
-                <a class="text-decoration-none link-dark" href="/"><i class="fa-solid fa-arrow-left"></i></a>
-              </div>
-              
-              <div class="text-center container-product-details justify-content-center">
-                <h2 class="text-start">{{ product.product_display_name }}</h2>
-                <p class="text-start"><strong>$ {{ product.price }}</strong></p>
-                <p class="text-start">Color - {{ product.color }}</p>
-                <p class="text-start pb-2">{{ product.description_product }}</p>
-                <div class="d-grid gap-2 col-6 mx-auto w-100">
-                  <button class="btn btn-dark" type="button"><i class="fa-solid fa-bag-shopping"></i>  Add</button>
-                </div>
-                <p class="text-start m-0 pt-3"><i class="fa-solid fa-store"></i> available in stores </p>
-                <p class="text-start m-0 pt-2"><i class="fa-solid fa-circle-exclamation"></i> Free standard delivery and free and flexible returns</p>
-                <button type="button" class="btn  btn-outline-dark btn-sm m-3">Delivery and Payment</button>
-              </div>
-            </div>
+ 
+<div class="container sub-container h-100">
+  <div class="row h-100">
+      <div class="col-12 col-md-6 h-100"> 
+        <div class="text-center h-50">
+          <img class="w-100 h-100 image-details rounded" src="{{ product.image.url }}" alt="{{ product.product_display_name }}">
         </div>
-         
-        {% include 'global/partials/comments.html' %}
-    </div>
+      </div>
+      <div class="col-12 col-md-6 "> 
+        <div class="text-start btn-back-home">
+          <a class="text-decoration-none link-dark" href="/"><i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+        
+        <div class="text-center container-product-details justify-content-center">
+          <h2 class="text-start">{{ product.product_display_name }}</h2>
+          <p class="text-start"><strong>$ {{ product.price }}</strong></p>
+          <p class="text-start">Color - {{ product.color }}</p>
+          <p class="text-start pb-2">{{ product.description_product }}</p>
+
+
+          <div class="d-grid gap-2 col-6 mx-auto w-100">
+
+                <button>
+                  <a href="{% url 'add_cart' product_id=product.id %}">Add to Cart</a>
+
+                    Adicionar ao Carrinho
+                </button>
+        </div>
+
+          <p class="text-start m-0 pt-3"><i class="fa-solid fa-store"></i> available in stores </p>
+          <p class="text-start m-0 pt-2"><i class="fa-solid fa-circle-exclamation"></i> Free standard delivery and free and flexible returns</p>
+          <button type="button" class="btn  btn-outline-dark btn-sm m-3">Delivery and Payment</button>
+        </div>
+      </div>
   </div>
+   
+  {% include 'global/partials/comments.html' %}
+</div>
+</div>
+
 {% endblock content %}

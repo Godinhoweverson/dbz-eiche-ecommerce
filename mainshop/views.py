@@ -46,18 +46,14 @@ def details_products(request, product_id):
 
     form = CommentForm()
 
-    print("Request Method:", request.method)
     if request.method == "POST":
-        print("Inside POST block") 
         if request.user.is_authenticated:
             form = CommentForm(request.POST)
-            print("Form is bound:", form.is_bound) 
             if form.is_valid():
                 comment = form.save(commit=False)
                 comment.product = product
                 comment.user = request.user
                 comment.save()
-                print("Comment saved successfully")  
                 return redirect('details_products', product_id=product.id)
             else:
                 print("Form has errors:", form.errors)  
