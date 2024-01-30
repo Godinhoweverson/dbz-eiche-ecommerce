@@ -19,19 +19,19 @@
         
         <div class="text-center container-product-details justify-content-center">
           <h2 class="text-start">{{ product.product_display_name }}</h2>
-          <p class="text-start"><strong>$ {{ product.price }}</strong></p>
+          <p class="text-start"><strong><i class="fa-solid fa-euro-sign"></i> {{ product.price }}</strong></p>
           <p class="text-start">Color - {{ product.color }}</p>
           <p class="text-start pb-2">{{ product.description_product }}</p>
 
 
           <div class="d-grid gap-2 col-6 mx-auto w-100">
-
-                <button>
-                  <a href="{% url 'add_cart' product_id=product.id %}">Add to Cart</a>
-
-                    Adicionar ao Carrinho
-                </button>
-        </div>
+            {%if in_cart %}
+              <a href="#" class="btn btn-dark">Added to Cart <i class="fas fa-check"></i></a>
+              <a href="{% url 'cart' %}" class="btn btn-outline-primary">View Cart <i class="fas fa-eye"></i></a>
+            {% else %}
+                <a href="{% url 'add_cart' product_id=product.id %}" class="btn btn-dark">Add to Cart <i class="fas fa-shopping-bag ps-1"></i></a>
+            {% endif %}
+          </div>
 
           <p class="text-start m-0 pt-3"><i class="fa-solid fa-store"></i> available in stores </p>
           <p class="text-start m-0 pt-2"><i class="fa-solid fa-circle-exclamation"></i> Free standard delivery and free and flexible returns</p>

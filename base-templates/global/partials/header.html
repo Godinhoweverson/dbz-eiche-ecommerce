@@ -24,8 +24,14 @@
             <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/"><i class="fas fa-shopping-cart"></i></a>  
-          </li>  
+            <button type="button" class="btn position-relative pb-0">
+              <a href="{% url 'cart' %}" class="nav-link position-relative p-0"><i class="fas fa-shopping-bag ps-1"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {{ cart_count }}
+                </span>
+              </a>
+             
+            </button>
           {% else %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'account_login' %}">Login</a>
@@ -33,9 +39,7 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'account_signup' %}">Create account</a>  
           </li>
-          <li class="nav-item">
-            <a class="nav-link" unicorn:redirect="/"><i class="fas fa-shopping-bag"></i></a>  
-          </li>  
+        
           {% endif %}
         </ul>
       </div>

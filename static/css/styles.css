@@ -327,18 +327,32 @@ max-height: 30rem;
 
 /* Cart */
 
-.card{
+#card{
     box-shadow: -5px 5px 10px rgba(0, 0, 0, .4);
     border-radius: 1rem;
     border: transparent;
-    padding: 0;
-    height: 100%;
+    padding: var(--spacing-gutter-medium);
+    height: 35rem;
 }
 
-.summary {
-    background-color: var(--color-gray-1);
+.cart-empty{
+    height: 34rem;
+    margin: 0 auto;
 }
 
+
+.quantity-value input {
+    border: 0;
+}
+
+
+.cart-img img{
+  height: 200px;
+}
+
+.remove_and_add{
+    width: 125px!important;
+}
 /* Media queries */
 
 @media (max-width: 900px){

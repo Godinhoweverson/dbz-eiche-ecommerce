@@ -50,10 +50,14 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+ 
     'widget_tweaks',
     'crispy_forms',
     'crispy_bootstrap5',
     'cart',
+    'dashboard',
+    'checkout',
     #other
     'storages',
 ]
@@ -90,10 +94,13 @@ TEMPLATES = [
                 'django.template.context_processors.request', 
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.counter',
             ],
         },
     },
 ]
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -105,6 +112,25 @@ AUTHENTICATION_BACKENDS = (
 
 SITE_ID = 1
 
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'OAUTH_PKCE_ENABLED': True,
+    }
+}
+
+# 526805713132-ei6u865ck4jup2l42qepetkfbrclltbn.apps.googleusercontent.com
+
+
+# `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`
+
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
@@ -113,7 +139,7 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'dashboard'
 
 WSGI_APPLICATION = 'EicheBazaar.wsgi.application'
 

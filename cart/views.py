@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from mainshop.models import Product
 from .models import Cart, CartItem 
+from django.contrib import messages
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -24,6 +26,7 @@ def add_cart(request, product_id):
     try:
         cart_item = CartItem.objects.get(product=product, cart=cart)
         cart_item.quantity += 1 #cart_item.quantity = cart_item.quantity + 1
+        messages.success(request, f'Added { product.product_display_name} to your cart')
         cart_item.save()
     except CartItem.DoesNotExist:
         cart_item = CartItem.objects.create(
@@ -32,6 +35,7 @@ def add_cart(request, product_id):
             cart = cart,
         )
         cart_item.save()
+        messages.success(request, f'Added { product.product_display_name} to your cart')
     return redirect('cart')
 
 def remove_cart(request, product_id):
@@ -40,6 +44,7 @@ def remove_cart(request, product_id):
     cart_item = CartItem.objects.get(product=product, cart=cart)
     if cart_item.quantity > 1:
         cart_item.quantity -= 1
+        messages.success(request, f'Removed { product.product_display_name} from your cart')
         cart_item.save()
     else:
         cart_item.delete()
@@ -50,24 +55,34 @@ def remove_cart_item(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     cart_item = CartItem.objects.get(product=product, cart=cart)
     cart_item.delete()
+    messages.success(request, f'Removed { product.product_display_name} from your cart')
     return redirect('cart')
 
 @login_required
-def cart(request, total=0, quantity=0, cart_items=None):
+def cart(request):
     try:
         cart = Cart.objects.get(cart_id=_cart_id(request))
         cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+
+        total = 0
+        quantity = 0
         for cart_item in cart_items:
             total += (cart_item.product.price * cart_item.quantity)
             quantity += cart_item.quantity
+
         if total < 50:
-            delivery = 0
-        else: 
-            delivery = round((2 * total)/100)
-        grand_total = total + delivery
+            delivery = 'Free'
+        else:
+            delivery = round((2 * total) / 100)
+
+        if delivery == 'Free':
+            grand_total = total
+        else:
+            grand_total = delivery + total
+
     except ObjectDoesNotExist:
         pass
-    
+
     context = {
         'total': total,
         'quantity': quantity,

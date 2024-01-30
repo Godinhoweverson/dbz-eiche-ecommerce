@@ -1,73 +1,107 @@
 {% extends 'global/base.html' %}
 {% load static %}
 
-
-
 {% block content %}
-
-
-<div class="card">
-    <div class="row">
-        <div class="col-md-8 cart">
-            <div class="title">
-                <div class="row">
-                    <div class="col"><h4><b>Shopping Cart</b></h4></div>
-                    <div class="col align-self-center text-right text-muted">3 items</div>
+<div class="container my-5">
+    {% if not cart_items %}
+        <!-- Cart is empty -->
+        <div class="container mt-100">
+            <div class="cart-empty">
+                <div class="col-sm-12 text-center">
+                    <h3><strong>Your Cart is Empty</strong></h3>
+                    <h4>Add something to make me happy :)</h4>
+                    <a href="{% url 'main_page' %}" class="btn btn-dark m-3" data-abc="true">Continue Shopping</a>
                 </div>
-            </div>    
-            {% for cart_item in cart_items %}
-            
-            <div class="row border-top border-bottom">
-                <div class="row main align-items-center">
-                    <div class="col-2"><img class="img-fluid" src="{{ cart_item.product.image.url }}" alt="{{ cart_item.product.product_display_name }}"></div>
-                    <div class="col">
-                        <div class="row text-muted">{{ cart_item.product.product_display_name }}</div>
-                        <div class="row">{{ cart_item.product.season }}</div>
-                    </div>
-                    <div class="col">
-                        <div class="container-quantity">
-                            <div class="btn-decrement">
-                                <a href="{% url 'remove_cart' cart_item.product.id %}" class="btn btn-light" type="button" id="button_plus"><i class="fa fa-minus"></i></a>
-                            </div>
-                            <input type="text" class="form-control" value="{{ cart_item.quantity }}">
-                            <div class="btn-increment">
-                                <a href="{% url 'add_cart' cart_item.product.id %}" class="btn btn-light" type="button" id="button_minus"><i class="fa fa-plus"></i></a>
-                            </div>
+            </div>
+        </div>
+    {% else %}
+        <!-- Shopping Cart Section -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="container-fluid justify-content-between">
+                        <div class="row">
+                        <div class="col-4">
+                            <h4 class="mb-3 text-end">Items</h4>
+                        </div>
+                        <div class="col-4">
+                            <h5 class="text-center">Quantity</h5>
+                        </div>
+                        <div class="col-4">
+                            <h5  class="text-start">Price</h5>
+                        </div>
                         </div>
                     </div>
-                    <div class="col">&euro; {{ cart_item.sub_total }}<a href="{% url 'remove_cart_item' cart_item.product.id %}">Remove</a></div>
+                    <hr>
+                    {% for cart_item in cart_items %}
+                    <div class="container-fluid justify-content-center ">
+                        <div class="row">
+                            <div class="col-12 col-md-3 cart-img p-3 text-center my-2"> 
+                                <img src="{{ cart_item.product.image.url }}" class="border border-dark" alt="{{ cart_item.product.product_display_name }}">
+                            </div>
+                            <div class="col-12 col-md-2 my-2">
+                                <div class="text-center h-50"><strong>{{ cart_item.product.product_display_name }}</strong></div>
+                                <div class="text-center h-50">{{ cart_item.product.season }}</div>
+                            </div>
+                            <div class="col-12 col-md-3 text-center mx-auto remove_and_add my-2">
+                                <div class="row">
+                                    <div class="col w-25">
+                                        <a href="{% url 'remove_cart' cart_item.product.id %}" class="btn btn-outline-dark btn-sm" type="button" id="button_plus">
+                                            <i class="fa fa-minus"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col quantity-value ">
+                                        <input type="text" class="w-50" value="{{ cart_item.quantity }}">
+                                    </div>
+                                    <div class="col w-25">
+                                        <a href="{% url 'add_cart' cart_item.product.id %}"  class="btn btn-outline-dark btn-sm " type="button" id="button_minus">
+                                            <i class="fa fa-plus"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-2 my-2">
+                                <p class="text-center"><strong>{{ cart_item.sub_total }}</strong></p>
+                            </div>
+                            <div class="col-12 col-md-2 text-center my-2">
+                                <a href="{% url 'remove_cart_item' cart_item.product.id %}"><i class="fa-solid fa-trash text-danger"></i></a>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                   
+                    {% endfor %}
                 </div>
             </div>
-            {% endfor %}
-            <div class="back-to-shop"><a href="#">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
-        </div>
-        <div class="col-md-4 summary">
-            <div><h5><b>Summary</b></h5></div>
-            <hr>
 
-            <div class="row">
-                <div class="col" style="padding-left:0;">ITEMS 3</div>
-                <div class="col text-right">&euro; {{ total }}</div>
+        <!-- Summary Section -->
+        <div class="col-12">
+            <div class="summary text-center my-4">
+                <h2><strong>Summary</strong></h2>
             </div>
-            <form>
-                <p>SHIPPING</p>
-                <select><option class="text-muted">Delivery- {{delivery}}</option></select>
-                <p>GIVE CODE</p>
-                <input id="code" placeholder="Enter your code">
-            </form>
-            <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                <div class="col">TOTAL PRICE</div>
-                <div class="col text-right">&euro; {{ grand_total }}</div>
+            <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th scope="col" class="text-center">Items</th>
+                    <th scope="col" class="text-center">Price</th>
+                    <th scope="col" class="text-center">Delivery</th>
+                    <th scope="col" class="text-center">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td >{{ quantity }}</td>
+                    <td class="text-center">$ {{ total }}</td>
+                    <td class="text-center">{{delivery}}</td>
+                    <td class="text-center">$ {{ grand_total }}</td>
+                  </tr>
+                </tbody>
+              </table>
+                <a href="/" class="btn btn-dark btn-block mt-5 w-100">CHECKOUT</a>
             </div>
 
-            
-            <button class="btn">CHECKOUT</button>
-        </div>
-    </div>
-    
+    {% endif %}
 </div>
-
-
 {% endblock content %}
 
-<div class="card">
+
+
