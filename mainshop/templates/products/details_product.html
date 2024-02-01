@@ -25,12 +25,15 @@
 
 
           <div class="d-grid gap-2 col-6 mx-auto w-100">
-            {%if in_cart %}
-              <a href="#" class="btn btn-dark">Added to Cart <i class="fas fa-check"></i></a>
               <a href="{% url 'cart' %}" class="btn btn-outline-primary">View Cart <i class="fas fa-eye"></i></a>
-            {% else %}
-                <a href="{% url 'add_cart' product_id=product.id %}" class="btn btn-dark">Add to Cart <i class="fas fa-shopping-bag ps-1"></i></a>
-            {% endif %}
+            <a 
+            href="#" 
+            class="btn-dark"
+            hx-get="{% url 'add_to_cart' product.id %}"
+            hx-target="#menu-cart-button"
+            hx-swap="outerHTML"
+        >
+            Add to Cart <i class="fas fa-shopping-bag ps-1"></i></a>
           </div>
 
           <p class="text-start m-0 pt-3"><i class="fa-solid fa-store"></i> available in stores </p>

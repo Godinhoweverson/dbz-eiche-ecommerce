@@ -1,8 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http.response import Http404
 from mainshop.models import Category, Product, Comment
-from cart.models import Cart, CartItem
-from cart.views import _cart_id
 from .forms import CommentForm
 from django.db.models import Q
 from django.core.paginator import Paginator
@@ -41,9 +39,7 @@ def details_products(request, product_id):
     categories = Category.objects.all()
     product = get_object_or_404(Product, pk=product_id)
     comments = product.comment_set.all().order_by('created_at')
-    in_cart = CartItem.objects.filter(cart__cart_id=_cart_id(request), product=product).exists()
-  
-
+ 
     paginator = Paginator(comments, 2)
     page = request.GET.get('page')
     comments = paginator.get_page(page)
@@ -64,7 +60,7 @@ def details_products(request, product_id):
         else:
             return redirect('account_login')
        
-    return render(request, 'products/details_product.html', {'product': product, 'categories': categories, 'form': form, 'comments': comments, 'in_cart':in_cart})
+    return render(request, 'products/details_product.html', {'product': product, 'categories': categories, 'form': form, 'comments': comments})
 
 
 def search(request):

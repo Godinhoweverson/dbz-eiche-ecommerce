@@ -1,96 +1,60 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render
+from .cart import Cart
+from django.conf import settings
 from mainshop.models import Product
-from .models import Cart, CartItem 
-from django.contrib import messages
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.contrib.auth.decorators import login_required
-from django.core.exceptions import ObjectDoesNotExist
 
-def _cart_id(request):
-    cart = request.session.session_key
-    if not cart:
-        cart = request.session.create()
-    return cart
 
-@login_required
-def add_cart(request, product_id):
-    product = Product.objects.get(id=product_id) #. get the product
-    try:
-        cart = Cart.objects.get(cart_id=_cart_id(request)) # get the cart using the cart_id present in the session
-    except Cart.DoesNotExist:
-        cart = Cart.objects.create(
-            cart_id = _cart_id(request)
-        )
-    cart.save()
+def add_to_cart(request, product_id):
+    cart = Cart(request)
+    cart.add(product_id)
 
-    try:
-        cart_item = CartItem.objects.get(product=product, cart=cart)
-        cart_item.quantity += 1 #cart_item.quantity = cart_item.quantity + 1
-        messages.success(request, f'Added { product.product_display_name} to your cart')
-        cart_item.save()
-    except CartItem.DoesNotExist:
-        cart_item = CartItem.objects.create(
-            product = product,
-            quantity = 1,
-            cart = cart,
-        )
-        cart_item.save()
-        messages.success(request, f'Added { product.product_display_name} to your cart')
-    return redirect('cart')
+    return render(request, 'cart/add-ons/menu_cart.html')
 
-def remove_cart(request, product_id):
-    cart = Cart.objects.get(cart_id=_cart_id(request))
-    product = get_object_or_404(Product, id=product_id)
-    cart_item = CartItem.objects.get(product=product, cart=cart)
-    if cart_item.quantity > 1:
-        cart_item.quantity -= 1
-        messages.success(request, f'Removed { product.product_display_name} from your cart')
-        cart_item.save()
-    else:
-        cart_item.delete()
-    return redirect('cart')
 
-def remove_cart_item(request, product_id):
-    cart = Cart.objects.get(cart_id=_cart_id(request))
-    product = get_object_or_404(Product, id=product_id)
-    cart_item = CartItem.objects.get(product=product, cart=cart)
-    cart_item.delete()
-    messages.success(request, f'Removed { product.product_display_name} from your cart')
-    return redirect('cart')
-
-@login_required
 def cart(request):
-    try:
-        cart = Cart.objects.get(cart_id=_cart_id(request))
-        cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+    return render(request, 'cart/cart.html')
 
-        total = 0
-        quantity = 0
-        for cart_item in cart_items:
-            total += (cart_item.product.price * cart_item.quantity)
-            quantity += cart_item.quantity
+def success(request):
+    return render(request, 'cart/success.html')
 
-        if total < 50:
-            delivery = 'Free'
-        else:
-            delivery = round((2 * total) / 100)
+def update_cart(request, product_id, action):
+    cart = Cart(request)
 
-        if delivery == 'Free':
-            grand_total = total
-        else:
-            grand_total = delivery + total
+    if action == 'increment':
+        cart.add(product_id, 1, True)
+    else:
+        cart.add(product_id, -1, True)
+    product = Product.objects.get(pk=product_id)
+    quantity = cart.get_item(product_id)
 
-    except ObjectDoesNotExist:
-        pass
+    if quantity:
+        quantity =quantity['quantity']
 
-    context = {
-        'total': total,
-        'quantity': quantity,
-        'cart_items': cart_items,
-        'delivery': delivery,
-        'grand_total': grand_total,
-    }
+        item = {
+            'product': {
+                'id': product.id,
+                'name': product.product_display_name,
+                'image': product.image,
+                'price': product.price
+            },
+            'total_price': (quantity * product.price),
+            'quantity': quantity,
+        }
+    else:
+        item = None
 
-    return render(request, 'products/cart.html', context)
+    response = render(request, 'cart/add-ons/cart_item.html', {'item':item})
+    response['HX-Trigger'] = 'update-menu-cart'
 
+    return response
 
+@login_required
+def checkout(request):
+    return render(request, 'cart/checkout.html')
+
+def hx_menu_cart(request):
+    return render(request, 'cart/add-ons/menu_cart.html')
+
+def hx_cart_total(request):
+    return render(request, 'cart/add-ons/cart_total.html')

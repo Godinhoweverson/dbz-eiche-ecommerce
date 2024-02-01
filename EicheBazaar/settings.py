@@ -36,6 +36,10 @@ ALLOWED_HOSTS = ['dbz-eiche-b8d414c8e346.herokuapp.com', 'localhost', '8000-godi
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-godinhoweve-dbzeicheeco-a7zpjf6y18f.ws-eu107.gitpod.io',
 ]
+
+SESSION_COOKIE_AGE = 86400
+CART_SESSION_ID = 'cart'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -57,7 +61,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'cart',
     'dashboard',
-    'checkout',
+    'order',
     #other
     'storages',
 ]
@@ -94,7 +98,7 @@ TEMPLATES = [
                 'django.template.context_processors.request', 
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'cart.context_processors.counter',
+                'cart.context_processors.cart',
             ],
         },
     },

@@ -15,15 +15,32 @@
         <div class="product-title-container">
           <h3>{{ product.product_display_name }}</h3>
         </div>
-        <div class="product-price-container d-flex align-items-center justify-content-center">
-          <div class="row">
-            <p class="col-6">$ {{ product.price }}</p>
-            <p class="col-6">{{ product.season }}</p>
+        <div class="product-price-container d-flex align-items-center justify-content-center ">
+          <div class="row w-100">
+            <div class="col-6 text-center p-1">
+              $ {{ product.price }}
+            </div>
+            <div class="col-6 text-center p-1">
+              {{ product.season }}
+            </div>
           </div>
         </div>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-center btn-container ">
-          <a href="{% url 'add_cart' product_id=product.id %}" class="text-decoration-none btn btn-outline-dark me-md-2 btn-sm px-4 "><i class="fas fa-shopping-bag"></i></a>
-          <a href="{% url 'details_products' product_id=product.id %}" class="btn btn-outline-dark btn-sm px-3 view-btn">View</a>
+        <div class="product-price-container d-flex align-items-center justify-content-center ">
+          <div class="row w-100">
+              <div class="col-6 text-center p-1">
+                <a 
+                href="#" 
+                class="mt-6 inline-block px-8 py-4 rounded-xl bg-purple-500 text-white hover:bg-purple-700"
+                hx-get="{% url 'add_to_cart' product.id %}"
+                hx-target="#menu-cart-button"
+                hx-swap="outerHTML"
+                >
+                Add to Cart <i class="fas fa-shopping-bag ps-1"></i></a>
+              </div>
+            <div class="col-6 text-center p-1">
+              <a href="{% url 'details_products' product_id=product.id %}" class="btn btn-outline-dark btn-sm px-3 view-btn w-100">View</a>
+            </div>
+          </div>
         </div>
       </div>
     {% endfor %}
