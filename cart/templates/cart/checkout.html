@@ -3,80 +3,101 @@
 {% block title %}Checkout{% endblock %}
 
 {% block content %}
-<div class="max-w-6xl mx-auto flex flex-wrap items-start py-6 px-6 xl:px-0">
-    <div class="products w-full lg:w-3/4">
-        <h1 class="mb-5 text-3xl">Checkout</h1>
-
-        <div class="w-full md:pr-6">
-            <div class="mb-6 p-6 bg-gray-100 rounded-xl">
-                <h2 class="mb-5 uppercase text-lg">Shipping information</h2>
-
-                <div class="flex space-x-6">
-                    <div class="w-1/2 mb-4">
-                        <label class="inline-block mb-2">First name</label>
-                        <input name="first_name" type="text" class="w-full p-5 rounded-xl" value="{{ request.user.first_name }}">
+<div class="container">
+    <div class="checkout-heading">
+        <h1 class="mb-5 text-center">Checkout</h1>
+    </div>
+    <hr>
+        <div class="main container">
+            <div class="mb-6 shipping-container">
+                <div class="shipping-heading">
+                    <h2 class="mb-5 text-lg">Shipping Information</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <label class="mb-2">First Name</label>
+                        <input name="first_name" type="text" class="form-control" value="{{ request.user.first_name }}" required>
                     </div>
 
-                    <div class="w-1/2 mb-4">
-                        <label class="inline-block mb-2">Last name</label>
-                        <input name="last_name" type="text" class="w-full p-5 rounded-xl" value="{{ request.user.last_name }}">
+                    <div class="col-md-6 mb-4">
+                        <label class="mb-2">Last Name</label>
+                        <input name="last_name" type="text" class="form-control" value="{{ request.user.last_name }}" required>
                     </div>
                 </div>
 
                 <div class="mb-4">
-                    <label class="inline-block mb-2">Address</label>
-                    <input name="address" type="text" class="w-full p-5 rounded-xl">
+                    <label class="mb-2">Address</label>
+                    <input name="address" type="text" class="form-control" required>
                 </div>
 
-                <div class="flex space-x-6">
-                    <div class="w-1/2 mb-4">
-                        <label class="inline-block mb-2">Zip code</label>
-                        <input name="zipcode" type="text" class="w-full p-5 rounded-xl">
+                <div class="row mb-4">
+                    <div class="col-md-6 mb-4">
+                        <label class="mb-2">Zip Code</label>
+                        <input name="zipcode" type="text" class="form-control" required>
                     </div>
 
-                    <div class="w-1/2 mb-4">
-                        <label class="inline-block mb-2">City/Place</label>
-                        <input name="place" type="text" class="w-full p-5 rounded-xl">
+                    <div class="col-md-6 mb-4">
+                        <label class="mb-2">City</label>
+                        <input name="place" type="text" class="form-control" required>
                     </div>
                 </div>
             </div>
-
-            <div class="mb-6 p-6 bg-gray-100 rounded-xl">
-                <h2 class="mb-5 uppercase text-lg">Contact information</h2>
+            <hr>
+            <div class="my-5">
+                <h2 class="mb-5">Contact Information</h2>
 
                 <div class="mb-4">
-                    <label class="inline-block mb-2">Email</label>
-                    <input name="email" type="email" class="w-full p-5 rounded-xl" value="{{ request.user.email }}">
+                    <label class="mb-2">Email</label>
+                    <input name="email" type="email" class="form-control" value="{{ request.user.email }}" required>
                 </div>
 
                 <div class="mb-4">
-                    <label class="inline-block mb-2">Phone</label>
-                    <input name="phone" type="phone" class="w-full p-5 rounded-xl">
+                    <label class="mb-2">Phone</label>
+                    <input name="phone" type="tel" class="form-control">
                 </div>
             </div>
 
             <div class="mb-6 p-6 bg-gray-100 rounded-xl" id="errors">
             </div>
         </div>
-    </div>
-
-    <div class="summary w-full md:w-1/4 p-6 bg-gray-100 rounded-xl mt-3">
-        <h2 class="uppercase text-lg mb-5">Summary</h2>
-
-        <div class="mb-6 flex justify-between">
-            <span class="font-semibold">Total</span>
-            <span>${{ cart.get_total_cost }}</span>
+        <hr>
+        <div class="summary-heading text-center mt-5">
+            <h2 class="mb-5">Summary</h2>
         </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-6">
+                    <button onclick="buy(event)" class="btn btn-dark">
+                        Confirm Checkout
+                    </button>
+                </div>
 
-        <button
-            onclick="buy(event)"
-            class="btn btn-dark"
-        >
-            Confirm checkout
-        </button>
+        <div class="col-6 mb-2">
+            <div class="container">
+                <div class="row row-cols-2">
+                    <div class="col p-2 fw-bold w-50">
+                        <span class="font-weight-bold">Total</span>
+                    </div>
+                    <div class="col p-2 fw-bold text-end w-50">
+                        <span>${{ cart.get_total_cost }}</span>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+        
     </div>
 </div>
+
+</div>
+
 {% endblock %}
+
+
+
+
+
+
 
 {% block scripts %}
 <script type="application/javascript" src="https://js.stripe.com/v3/"></script>

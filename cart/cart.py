@@ -14,11 +14,12 @@ class Cart(object):
     
     def __iter__(self):
         for p in self.cart.keys():
-            self.cart[str(p)]['product'] = Product.objects.get(pk=p)
+            product_id = int(p)
+            product = Product.objects.get(pk=product_id)
+            self.cart[str(p)]['product'] = product
         
         for item in self.cart.values():
             item['total_price'] = int(item['product'].price * item['quantity'])
-
             yield item
     
     def __len__(self):
@@ -41,6 +42,24 @@ class Cart(object):
                 self.remove(product_id)
             
         self.save()
+
+    def increment_quantity(self, product_id):
+        product_id = str(product_id)
+
+        if product_id in self.cart:
+            self.cart[product_id]['quantity'] += 1
+            self.save()
+
+    def decrement_quantity(self, product_id):
+        product_id = str(product_id)
+
+        if product_id in self.cart:
+            self.cart[product_id]['quantity'] -= 1
+
+            if self.cart[product_id]['quantity'] <= 0:
+                self.remove(product_id)
+            else:
+                self.save()
     
     def remove(self, product_id):
         if product_id in self.cart:
