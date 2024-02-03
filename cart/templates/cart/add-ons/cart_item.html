@@ -1,19 +1,17 @@
+
 {% if item %}
-    <div class="product mb-6 flex pr-6" id="cart-item-{{ item.product.id }}">
-        <a href="666" class="w-1/4">
-            <img class="hover:shadow-lg rounded-xl" src="{{ item.product.image.url }}">
-        </a>
-
-        <div class="w-3/4 pl-6">
-            <div class="flex justify-between">
-                <a href="55556" class="text-lg">{{ item.product.product_display_name }}</a>
-
-                <span class="mb-6 pt-1 text-gray-400">${{ item.total_price }}</span>
+    <div class="container-fluid justify-content-center" id="cart-item-{{ item.product.id }}">
+        <div class="row">
+            <div class="col-12 col-md-2 cart-img p-3 text-center my-2">
+                <a href="666" class="w-1/4">
+                    <img class="hover:shadow-lg rounded-xl" src="{{ item.product.image.url }}">
+                </a>
             </div>
-
-            <hr>
-
-            <div class="quantity mt-6 flex items-center space-x-4">
+            <div class="col-12 col-md-2 my-2">
+                {{ item.product.product_display_name }}
+                {{ item.product.season }}
+            </div>
+            <div class="col-12 col-md-4 text-center mx-auto remove_and_add my-2">
                 <a 
                     class="p-3 bg-gray-100"
                     hx-get="{% url 'update_cart' item.product.id 'decrement' %}"
@@ -32,6 +30,13 @@
                     +
                 </a>
             </div>
+            <div class="col-12 col-md-2 my-2">
+                <span class="mb-6 pt-1 text-gray-400">${{ item.total_price }}</span>
+            </div>
+            <div class="col-12 col-md-2 text-center my-2">
+                <a href="/"><i class="fa-solid fa-trash text-danger"></i></a>
+            </div>
+            <hr>
         </div>
     </div>
 {% endif %}

@@ -10,7 +10,7 @@
     {% include 'global/partials/header.html' %}
 <body>
     {% if messages %}
-        <div class="messsage-container">
+        <div class="message-container">
             {% for message in messages %}
                 {% with message.level as level %}
                     {% if level == 40 %}
@@ -33,7 +33,7 @@
     {% include 'global/partials/pagination.html' %}
     {% include 'global/partials/footer.html' %}
     
-    <script src="https://unpkg.com/htmx.org@1.7.0"></script>
+        <script src="https://unpkg.com/htmx.org@1.9.10"></script>
        <!-- jQuery -->
        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
@@ -49,5 +49,8 @@
    
        <!-- scripts -->
        <script src="{% static 'js/script.js' %}"></script>
+
+       {% block scripts %}
+       {% endblock %}
 </body>
 </html> 

@@ -25,10 +25,10 @@
 
 
           <div class="d-grid gap-2 col-6 mx-auto w-100">
-              <a href="{% url 'cart' %}" class="btn btn-outline-primary">View Cart <i class="fas fa-eye"></i></a>
+              <a href="{% url 'cart' %}" class="btn btn-outline-dark">View Cart <i class="fas fa-eye"></i></a>
             <a 
             href="#" 
-            class="btn-dark"
+            class="btn btn-dark"
             hx-get="{% url 'add_to_cart' product.id %}"
             hx-target="#menu-cart-button"
             hx-swap="outerHTML"

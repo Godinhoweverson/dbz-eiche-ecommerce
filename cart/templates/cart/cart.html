@@ -1,30 +1,74 @@
 {% extends 'global/base.html' %}
 {% load static %}
-{% block title %}Cart{% endblock %}
+
+{% block title %}Cart | {% endblock %}
 
 {% block content %}
-<div class="max-w-6xl mx-auto flex flex-wrap items-start py-6 px-6 xl:px-0">
-    <div class="products w-full lg:w-3/4">
-        {% for item in cart %}
+<div class="container my-5 vh-100">
+    <div class="row">
+        <div class="col-12">
+            <div class="container-fluid justify-content-between pb-2">
+                <div class="row">
+                    <div class="col-4">
+                        <h4 class="mb-3 text-end">Items</h4>
+                    </div>
+                    <div class="col-4">
+                        <h5 class="text-center">Quantity</h5>
+                    </div>
+                    <div class="col-4">
+                        <h5  class="text-start">Price</h5>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            {% for item in cart %}
             {% include 'cart/add-ons/cart_item.html' %}
         {% endfor %}
-    </div>
-
-    <div class="summary w-full md:w-1/4 p-6 bg-gray-100 rounded-xl mt-3">
-        <h2 class="uppercase text-lg mb-5">Summary</h2>
-
-        <div class="mb-6 flex justify-between">
-            <span class="font-semibold">Total</span>
-            <span
-                hx-get="{% url 'hx_cart_total' %}"
-                hx-trigger="update-menu-cart from:body"
-                hx-swap="innerHTML"
-            >
-                {% include 'cart/add-ons/cart_total.html' %}
-            </span>
         </div>
-
-        <a href="{% url 'checkout' %}" class="btn btn-dark">Checkout</a>
     </div>
+
+    <div class="col-12">
+        <div class="summary text-center p-5">
+            <h2><strong>Summary</strong></h2>
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-6">
+                    <a href="{% url 'checkout' %}" class="btn btn-outline-dark w-50 p-2 m-2">CONTINUE SHOPPING</a>
+                    <a href="{% url 'checkout' %}" class="btn btn-dark w-50 p-2 m-2">Checkout</a>
+                </div>
+                <div class="col-6">
+                    <div class="container">
+                        <div class="row row-cols-2">
+                            <div class="col p-2 fw-bold">
+                                TOTAL:
+                                <hr>
+                            </div>
+                            <div class="col text-end p-2 fw-bold"> <span
+                                hx-get="{% url 'hx_cart_total' %}"
+                                hx-trigger="update-menu-cart from:body"
+                                hx-swap="innerHTML"
+                            >
+                            {% include 'cart/add-ons/cart_total.html' %}
+                            </span>
+                            <hr>
+                        </div>
+                            <div class="col p-2 fw-bold">
+
+                                Delivery:
+
+                            </div>
+                            <div class="col text-end p-2 fw-bold">
+                                FREE</div>
+
+
+                        </div>
+                    </div>
+                </div>
+             
+            </div>
+        </div>
+        
+    </div>   
 </div>
 {% endblock %}

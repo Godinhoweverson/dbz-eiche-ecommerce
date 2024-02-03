@@ -4,7 +4,7 @@
 {% block content %}
 <div class="container my-5">
     {% if not cart_items %}
-        <!-- Cart is empty
+       Cart is empty
         <div class="container mt-100">
             <div class="cart-empty">
                 <div class="col-sm-12 text-center">
@@ -45,8 +45,13 @@
                             <div class="col-12 col-md-3 text-center mx-auto remove_and_add my-2">
                                 <div class="row">
                                     <div class="col w-25">
-                                        <a href="{% url 'remove_cart' cart_item.product.id %}" class="btn btn-outline-dark btn-sm" type="button" id="button_plus">
-                                            <i class="fa fa-minus"></i>
+                                        <a 
+                                            class="p-3 bg-gray-100"
+                                            hx-get="{% url 'update_cart' item.product.id 'decrement' %}"
+                                            hx-target="#cart-item-{{ item.product.id }}"
+                                            hx-swap="outerHTML"
+                                        >
+                                        -
                                         </a>
                                     </div>
                                     <div class="col quantity-value ">
@@ -60,7 +65,7 @@
                                 </div>
                             </div>
                             <div class="col-12 col-md-2 my-2">
-                                <p class="text-center"><strong>{{ cart_item.sub_total }}</strong></p>
+                                <span>{{ item.quantity }}</span>
                             </div>
                             <div class="col-12 col-md-2 text-center my-2">
                                 <a href="{% url 'remove_cart_item' cart_item.product.id %}"><i class="fa-solid fa-trash text-danger"></i></a>
@@ -73,7 +78,6 @@
                 </div>
             </div>
 
-<!-- 
       <div class="col-12">
             <div class="summary text-center my-4">
                 <h2><strong>Summary</strong></h2>
@@ -111,4 +115,4 @@
             </div>
     {% endif %}
 </div>
-{% endblock content %} -->
+{% endblock content %} 
