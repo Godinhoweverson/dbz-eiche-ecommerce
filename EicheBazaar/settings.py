@@ -45,8 +45,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'cart',
-    'dashboard',
     'order',
+    'dashboard',
     #other
     'storages',
 ]
@@ -123,7 +123,7 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'EicheBazaar.wsgi.application'
 

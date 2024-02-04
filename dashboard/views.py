@@ -1,22 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
-def dashboard(request):
-    return render(request, 'dashboard/dashboard.html')
+
 @login_required
-def myaccount(request):
-    return render(request, 'dashboard/myaccount')
+def dashboard_overview(request):
+    return render(request, 'dashboard/dashboard_overview.html')
 
 @login_required
 def edit_myaccount(request):
+    user = request.user
     if request.method == 'POST':
-        user.request.user
         user.first_name = request.POST.get('first_name')
         user.last_name = request.POST.get('last_name')
         user.email = request.POST.get('email')
         user.username = request.POST.get('username')
         user.save()
 
-        return redirect('myaccount')
+        return redirect('dashboard:dashboard_overview')
 
     return render(request, 'dashboard/edit_myaccount.html')

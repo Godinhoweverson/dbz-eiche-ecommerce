@@ -1,0 +1,37 @@
+{% extends 'global/base.html' %}
+{% load static %}
+{% block title %} | Edit account{% endblock %}
+
+{% block content %}
+
+<div class="container container-form">
+    <div class="col-12 my-5">
+        <h1 class="text-center">Edit account</h1>
+    </div>
+    <form method="post" action="{% url 'dashboard:edit_myaccount' %}" class="mx-auto w-50 shadow-sm p-3 mb-5 bg-body-tertiary rounder">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-6">
+                <label>First name</label>
+                <input name="first_name" value="{{ request.user.first_name }}" type="text" class="form-control my-2">
+            </div>
+            <div class="col-6">
+                <label>Last name</label>
+                <input name="last_name" value="{{ request.user.last_name }}" type="text" class="form-control my-2">
+            </div>
+        </div>
+       <div class="col-12">
+        <label>Username</label>
+        <input name="username" value="{{ request.user.username }}" type="text" class="form-control my-2">
+       </div>
+       <div class="col-12">
+        <label>Email</label>
+        <input name="email" value="{{ request.user.email }}" type="email" class="form-control my-2">
+       </div>
+       <div class="col-12 my-5">
+        <button class="btn btn-dark w-100">Submit</button>
+       </div>
+
+    </form>
+</div>
+{% endblock %}

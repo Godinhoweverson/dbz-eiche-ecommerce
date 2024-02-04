@@ -48,7 +48,7 @@
 }
 
 body {
-    font-family: var(--font-primary);
+    font-family: var(--font-headings);
     color: var(--color-gray-7);
 }
 
@@ -59,6 +59,10 @@ body {
 
 h1, h2, h3, h4{
     font-family: var(--font-headings);
+}
+
+.container-form{
+    height: 65vh;
 }
 
 .navbar-nav {
@@ -394,6 +398,14 @@ max-height: 30rem;
 .remove_and_add{
     width: 125px!important;
 }
+
+/* Dashboard */
+
+#dashboard-image{
+    height: 100px !important;
+
+}
+
 /* Media queries */
 
 @media (max-width: 900px){
