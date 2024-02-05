@@ -1,74 +1,119 @@
 {% extends 'global/base.html' %}
 {% load static %}
-
 {% block title %}Cart | {% endblock %}
 
 {% block content %}
-<div class="container my-5 vh-100">
-    <div class="row">
-        <div class="col-12">
-            <div class="container-fluid justify-content-between pb-2">
-                <div class="row">
-                    <div class="col-4">
-                        <h4 class="mb-3 text-end">Items</h4>
-                    </div>
-                    <div class="col-4">
-                        <h5 class="text-center">Quantity</h5>
-                    </div>
-                    <div class="col-4">
-                        <h5  class="text-start">Price</h5>
-                    </div>
-                </div>
-                <hr>
-            </div>
-            {% for item in cart %}
-                {% include 'cart/add-ons/cart_item.html' %}
-            {% endfor %}
+{% if not cart %}
+    <div class="d-flex align-items-center text-center container-form mb-3">
+        <div class="col-sm-12 ">
+            <h3 class="fw-bold"> Cart is Empty</h3>
+            <h4>Add something to make you happy :)</h4>
+            <a href="{% url 'main_page' %}" class="btn btn-dark m-3" data-abc="true">Continue Shopping</a>
         </div>
     </div>
-
-    <div class="col-12">
-        <div class="summary text-center p-5">
-            <h2><strong>Summary</strong></h2>
-        </div>
-        <div class="col-12">
-            <div class="row">
-                <div class="col-6">
-                    <a href="{% url 'main_page' %}" class="btn btn-outline-dark w-50 p-2 m-2">CONTINUE SHOPPING</a>
-                    <a href="{% url 'checkout' %}" class="btn btn-dark w-50 p-2 m-2">Checkout</a>
-                </div>
-                <div class="col-6">
-                    <div class="container">
-                        <div class="row row-cols-2">
-                            <div class="col p-2 fw-bold">
-                                TOTAL:
-                                <hr>
-                            </div>
-                            <div class="col text-end p-2 fw-bold"> <span
-                                hx-get="{% url 'hx_cart_total' %}"
-                                hx-trigger="update-menu-cart from:body"
-                                hx-swap="innerHTML"
-                            >
-                            {% include 'cart/add-ons/cart_total.html' %}
-                            </span>
-                            <hr>
+{% else %}
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="container-fluid justify-content-between pb-2">
+                    <div class="row">
+                        <div class="col-4">
+                            <h4 class="mb-3 text-end">Items</h4>
                         </div>
-                            <div class="col p-2 fw-bold">
-
-                                Delivery:
-
-                            </div>
-                            <div class="col text-end p-2 fw-bold">
-                                FREE</div>
-
-
+                        <div class="col-4">
+                            <h5 class="text-center">Quantity</h5>
+                        </div>
+                        <div class="col-4">
+                            <h5  class="text-start">Price</h5>
                         </div>
                     </div>
+                    <hr>
                 </div>
-             
+                {% for item in cart %}
+                    {% include 'cart/add-ons/cart_item.html' %}
+        
+                {% endfor %}
             </div>
         </div>
-        
-    </div>   
-</div>
+        <div class="col-12">
+            <div class="summary text-center p-5">
+                <h2><strong>Summary</strong></h2>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-6">
+                        <a href="{% url 'main_page' %}" class="btn btn-outline-dark w-50 p-2 m-2">CONTINUE SHOPPING</a>
+                        <a href="{% url 'checkout' %}" class="btn btn-dark w-50 p-2 m-2">Checkout</a>
+                    </div>
+                    <div class="col-6">
+                        <div class="container">
+                            <div class="row row-cols-2">
+                                <div class="col p-2 fw-bold">
+                                    TOTAL:
+                                    <hr>
+                                </div>
+                                <div class="col text-end p-2 fw-bold"> <span
+                                    hx-get="{% url 'hx_cart_total' %}"
+                                    hx-trigger="update-menu-cart from:body"
+                                    hx-swap="innerHTML"
+                                >
+                                {% include 'cart/add-ons/cart_total.html' %}
+                                </span>
+                                <hr>
+                            </div>
+                                <div class="col p-2 fw-bold">
+
+                                    Delivery:
+
+                                </div>
+                                <div class="col text-end p-2 fw-bold">
+                                    FREE</div>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+            
+        </div>   
+    </div>  
+
+     <!-- Cart  -->
+
+     <script>
+    function updateCart(productId, action) {
+        fetch(`update_cart/${productId}/${action}/`, {
+            method: 'GET',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+            },
+        })
+        .then(response => response.text())
+        .then(data => {
+            const cartItem = document.getElementById(`cart-item-${productId}`);
+            cartItem.innerHTML = data;
+            const event = new Event('hx-trigger');
+            document.body.dispatchEvent(event);
+            location.reload();
+        })
+        .catch(error => console.error('Error updating cart:', error));
+    }
+
+
+    function removeFromCart(productId) {
+    fetch(`remove_from_cart/${productId}/`, {
+        method: 'GET',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message);
+        location.reload();
+    })
+    .catch(error => console.error('Error removing item from cart:', error));
+}
+    </script>
+{% endif %}
 {% endblock %}

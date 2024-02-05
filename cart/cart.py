@@ -13,14 +13,15 @@ class Cart(object):
         self.cart = cart
     
     def __iter__(self):
-        for p in self.cart.keys():
-            product_id = int(p)
-            product = Product.objects.get(pk=product_id)
-            self.cart[str(p)]['product'] = product
-        
-        for item in self.cart.values():
-            item['total_price'] = int(item['product'].price * item['quantity'])
-            yield item
+        for product_id, item in self.cart.items():
+            product_id = int(product_id)
+            try:
+                product = Product.objects.get(pk=product_id)
+                item['product'] = product.to_json_serializable()
+                item['total_price'] = int(product.price * item['quantity'])
+                yield item
+            except Product.DoesNotExist:
+                pass
     
     def __len__(self):
         return sum(item['quantity'] for item in self.cart.values())
@@ -61,7 +62,9 @@ class Cart(object):
             else:
                 self.save()
     
-    def remove(self, product_id):
+    def remove_item(self, product_id):
+        product_id = str(product_id)
+
         if product_id in self.cart:
             del self.cart[product_id]
             self.save()

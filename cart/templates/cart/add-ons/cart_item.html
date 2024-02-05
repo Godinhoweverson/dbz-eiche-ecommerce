@@ -1,38 +1,28 @@
 
-{% if item %}
+
     <div class="container-fluid justify-content-center" id="cart-item-{{ item.product.id }}">
         <div class="row">
             <div class="col-12 col-md-2 cart-img p-3 text-center my-2">
                 <a href="666" class="w-1/4">
-                    <img class="hover:shadow-lg rounded-xl" src="{{ item.product.image.url }}">
+                    <img id="dashboard-image" src="{{ item.product.image.url }}">
                 </a>
             </div>
             <div class="col-12 col-md-2 my-2">
                 {{ item.product.product_display_name }}
                 {{ item.product.season }}
             </div>
-            <div class="col-12 col-md-4 text-center mx-auto remove_and_add my-2">
-                <a 
-                    class="p-3 bg-gray-100"
-                    hx-get="{% url 'update_cart' item.product.id 'decrement' %}"
-                    hx-target="#cart-item-{{ item.product.id }}"
-                    hx-swap="outerHTML"
-                >
-                    - <!-- Decrement button -->
-                </a>
-                <span>{{ item.quantity }}</span>
-                
-                <a class="p-3 bg-gray-100" hx-get="{% url 'update_cart' item.product.id 'increment' %}" hx-target="#cart-item-{{ item.product.id }}" hx-swap="outerHTML">+</a>
-
+            <div class="col-12 col-md-2 text-center my-2">
+                <button class="btn btn-sm btn-outline-dark" onclick="updateCart('{{ item.product.id }}', 'decrement')">-</button>
+                <span class="mx-2">{{ item.quantity }}</span>
+                <button class="btn btn-sm btn-outline-dark" onclick="updateCart('{{ item.product.id }}', 'increment')">+</button>
             </div>
-    
             <div class="col-12 col-md-2 my-2">
                 <span class="mb-6 pt-1 text-gray-400">${{ item.total_price }}</span>
             </div>
+
             <div class="col-12 col-md-2 text-center my-2">
-                <a href="/"><i class="fa-solid fa-trash text-danger"></i></a>
+                <button class="btn btn-danger" onclick="removeFromCart('{{ item.product.id }}')">Remove</button>
             </div>
             <hr>
         </div>
     </div>
-{% endif %}

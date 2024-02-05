@@ -7,48 +7,12 @@
 
 
 {% block content %}
-<div class="authentificator-container sigin-container vh-100">
-  <div class="container pb-5">
+<div class="container vh-100">
     <div class="row">
-      <div class="text-center  p-5">
-        <h1>{% trans "Sign In" %}</h1>
+      <div class="text-center my-5">
+        <h1 class="">Sign in</h1>
       </div>
-      {% get_providers as socialaccount_providers %}
-
-      {% if socialaccount_providers %}
-      <p>{% blocktrans with site.name as site_name %}Please sign in with one
-      of your existing third party accounts.<br>Or, <a href="{{ signup_url }}">sign up</a>
-      for a {{ site_name }} account and sign in below:
-      {% endblocktrans %}</p>
-  
-      <div class="socialaccount_ballot">
-        <div class="google-btn">
-          <div class="google-icon-wrapper">
-            <img src="{{ MEDIA_URL }}google_icon.png" alt=""><p class="btn-text"><b>Sign in with {% include "socialaccount/snippets/provider_list.html" with process="login" %}</b></p>
-          </div>
-          
-        </div>
-        <div class="socialaccount_providers">
-          
-          
-        </div>
-
-      
-  
-
-        <div class="login-or border-top border-bottom my-3">{% trans 'OR' %}</div>
-  
-      </div>
-  
-      {% include "socialaccount/snippets/login_extra.html" %}
-  
-      {% else %}
-      <p>{% blocktrans %}If you have not created an account yet, then please
-      <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-      {% endif %}
-    </div>
-    <div class="row">
-      <form class="login w-50 mx-auto" method="POST" action="{% url 'account_login' %}">
+      <form class="login w-50 mx-auto shadow-sm p-3 my-5 bg-body-tertiary rounded" method="POST" action="{% url 'account_login' %}">
         <div class="mb-3">
           {% csrf_token %}
           {% for field in form %}
@@ -71,11 +35,10 @@
             <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
           </div>
           
-          <button class="btn btn-dark w-100" type="submit">{% trans "Sign In" %}</button>
+          <button class="btn btn-dark w-100 mb-5" type="submit">{% trans "Sign in" %}</button>
         </div>
       </form>
     </div>
-  </div>
 </div>
 
 

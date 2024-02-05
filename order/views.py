@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from decimal import Decimal
 import json
 import stripe
 
@@ -8,6 +8,7 @@ from django.http import JsonResponse
 
 from cart.cart import Cart
 from .models import Order, OrderItem
+from mainshop.models import Product
 
 
 def start_order(request):
@@ -19,22 +20,27 @@ def start_order(request):
     YOUR_URL = 'https://8000-godinhoweve-dbzeicheeco-a7zpjf6y18f.ws-eu108.gitpod.io'
 
     for item in cart:
-        product = item['product']
-        total_price += product.price * int(item['quantity'])
 
-        unit_amount_cents = int(product.price * 100)
+        product = item['product']
+        total_price += Decimal(product['price']) * int(item['quantity'])
+
+        unit_amount_cents = int(Decimal(product['price']) * 100)
+
+        product_id = product['id']
 
         items.append({
             'price_data': {
                 'currency': 'usd',
                 'product_data':{
-                    'name': product.product_display_name,
+                    'name': product['product_display_name'],
                 },
                 'unit_amount': unit_amount_cents,
             },
             'quantity': item['quantity']
         }
         )
+
+        product_instance = Product.objects.get(pk=product_id)
 
     stripe.api_key = settings.STRIPE_API_KEY_HIDDEN
     session  = stripe.checkout.Session.create(
@@ -65,11 +71,14 @@ def start_order(request):
     for item in cart:
         product = item['product']
         quantity = int(item['quantity'])
-        price = product.price * quantity
+        price = Decimal(product['price']) * quantity
+
+        product_id = product['id']
+        product_instance = Product.objects.get(pk=product_id)
 
         item = OrderItem.objects.create(
             order=order, 
-            product=product, 
+            product=product_instance, 
             price=price, 
             quantity=quantity
         )

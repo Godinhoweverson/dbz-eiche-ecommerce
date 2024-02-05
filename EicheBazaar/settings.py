@@ -25,6 +25,7 @@ STRIPE_API_KEY_HIDDEN = 'sk_test_51ONG2KDSqKG0ZqTEMVDwM8nS83CDB0MZual7rgqQRH9zLD
 SESSION_COOKIE_AGE = 86400
 CART_SESSION_ID = 'cart'
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,8 +40,6 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
- 
     'widget_tweaks',
     'crispy_forms',
     'crispy_bootstrap5',

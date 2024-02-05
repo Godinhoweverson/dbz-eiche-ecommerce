@@ -62,9 +62,37 @@ h1, h2, h3, h4{
 }
 
 .container-form{
-    height: 65vh;
+    height: 70vh;
 }
 
+/* TOASTS */
+
+.toast-container {
+    position: fixed;
+    top: auto;
+    right: 15px;
+    z-index: 9999999999999;
+}
+
+.line-success{
+    border: 2px solid var(--color-success-dark);
+    margin: 20px 0; 
+}
+
+.line-danger{
+    border: 2px solid var(--color-error-dark);
+    margin: 20px 0; 
+}
+
+.line-info{
+    border: 2px solid var(--color-info-dark);
+    margin: 20px 0; 
+}
+
+.line-warming{
+    border: 2px solid var(--color-alert-dark);
+    margin: 20px 0; 
+}
 .navbar-nav {
     text-align: right;
 }

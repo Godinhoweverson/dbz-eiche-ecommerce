@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.forms.models import model_to_dict
 
 class Category(models.Model):
 
@@ -23,6 +23,13 @@ class Product(models.Model):
     image = models.ImageField(upload_to='',null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     slug = models.SlugField(unique=True, default='Null')
+
+    def to_json_serializable(self):
+        product_dict = model_to_dict(self)
+        product_dict['price'] = str(self.price)
+
+        return product_dict
+
 
     def __str__(self):
         return self.product_display_name

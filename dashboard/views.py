@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 @login_required
@@ -14,6 +15,7 @@ def edit_myaccount(request):
         user.last_name = request.POST.get('last_name')
         user.email = request.POST.get('email')
         user.username = request.POST.get('username')
+        messages.success(request, f"Account Updated! Your changes have been saved.")
         user.save()
 
         return redirect('dashboard:dashboard_overview')

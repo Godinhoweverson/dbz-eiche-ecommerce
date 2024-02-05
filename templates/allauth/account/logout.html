@@ -9,14 +9,14 @@
 {% block content %}
 <div class="authentificator-container signout-container">
   <div class="container">
-    <div class="text-center p-5">
+    <div class="text-center">
       <h1>{% trans "Sign Out" %}</h1>
     </div>
-    <div class="text-center p-5">
-      <p>{% trans 'Are you sure you want to sign out?' %}</p>
-    </div>
-    <div class="row">
-      <form class="signup w-50 mx-auto" id="signup_form" method="post" action="{% url 'account_logout' %}">
+    <form class="signup w-50 mx-auto shadow-sm p-3 my-5 bg-body-tertiary rounded" id="signup_form" method="post" action="{% url 'account_logout' %}">
+      <div class="text-center p-5">
+        <p>{% trans 'Are you sure you want to sign out?' %}</p>
+      </div>
+      <div class="row">
         <div class="mb-3">
           {% csrf_token %}
           {% for field in form %}

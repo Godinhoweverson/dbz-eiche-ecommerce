@@ -2,7 +2,6 @@
 {% load static %}
 
 
-
 {% block content %}
  
 <div class="container sub-container h-100">
@@ -29,7 +28,7 @@
    
               <div>
                   <a 
-                      href="#" 
+                      href="{% url 'cart' %}" 
                       class="btn btn-dark w-100"
                       hx-get="{% url 'add_to_cart' product.id %}"
                       hx-target="#menu-cart-button"
