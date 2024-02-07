@@ -62,7 +62,7 @@ h1, h2, h3, h4{
 }
 
 .container-form{
-    height: 70vh;
+    min-height: 600px;
 }
 
 /* TOASTS */
@@ -190,15 +190,6 @@ h1, h2, h3, h4{
     padding: 10px;
 }
 
-.message-container {
-    transform: scale(1);
-    transition: all 300 ms ease-in-out;
-}
-
-.message-container:hover{
-    transform: scale(1.02);
-    box-shadow: -8px 8px 18px rgba(0, 0, 0, .1);
-}
 /* Main content */
 
 .main-content {
@@ -337,10 +328,17 @@ a:hover, a:focus {
 
 
 .textarea {
-    height: 8rem;
+    height: 1rem;
   
 }
-   
+
+#delete-comment{
+    color: var(--color-error-dark) !important;
+}
+
+#edit-comment{
+    color:var(--color-black) !important;
+}
 /* Update-section */
 
 
@@ -356,46 +354,6 @@ max-height: 30rem;
     height: 70vh;
     padding: var(--spacing-gutter-large);
 }
-
-.google-btn {
-    width: 184px;
-    height: 42px;
-    background-color: #4285f4;
-    border-radius: 2px;
-    box-shadow: 0 3px 4px 0 rgba(0,0,0,.25);
-    .google-icon-wrapper {
-      position: absolute;
-      margin-top: 1px;
-      margin-left: 1px;
-      width: 40px;
-      height: 40px;
-      border-radius: 2px;
-      background-color: #fff;
-    }
-    .google-icon {
-      position: absolute;
-      margin-top: 11px;
-      margin-left: 11px;
-      width: 18px;
-      height: 18px;
-    }
-    .btn-text {
-      float: right;
-      margin: 11px 11px 0 0;
-      color: #fff;
-      font-size: 14px;
-      letter-spacing: 0.2px;
-      font-family: "Roboto";
-    }
-    &:hover {
-      box-shadow: 0 0 6px #4285f4;
-    }
-    &:active {
-      background: #1669F2;
-    }
-  }
-  
-
 
 
 /* Cart */
@@ -429,9 +387,19 @@ max-height: 30rem;
 
 /* Dashboard */
 
+.dashboard-container{
+    min-height:600px!important;
+}
+
 #dashboard-image{
     height: 100px !important;
 
+}
+
+/* Edit Profile */
+
+.edit-profile{
+    width: 50%;
 }
 
 /* Media queries */
@@ -444,6 +412,13 @@ max-height: 30rem;
     .btn-back-home{
         padding: 1rem 0;
     }
+
+    
+    /* Edit Profile */
+
+    .edit-profile{
+        width: 100%;
+    }   
 }
 
 @media (max-width: 767px){
@@ -467,6 +442,20 @@ max-height: 30rem;
     .review-main-container {
         padding: 0;
     }
+
+    /* Comment */
+
+    .btn-comment{
+        height: var(--spacing-gutter-medium);
+    }
+
+    /* Edit Profile */
+
+.edit-profile{
+    width: 100%;
+}
+
+
 }
 
 

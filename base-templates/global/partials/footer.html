@@ -10,14 +10,13 @@
                     <h5 class="text-white mb-3">Quick links</h5>
                     <ul class="list-unstyled text-muted">
                         <li><a class="text-decoration-none" href="#">Facebook</a></li>
-                        <li><a class="text-decoration-none" href="#">Login</a></li>
-                        <li><a class="text-decoration-none" href="#">Create account</a></li>
+                        <li><a class="text-decoration-none" href="{% url 'account_login' %}">Login</a></li>
+                        <li><a class="text-decoration-none" href="{% url 'account_signup' %}">Create account</a></li>
                         <li><a class="text-decoration-none" href="#">Privacy policy</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <h5 class="text-white mb-3">Newsletter</h5>
-                    <p class="small text-muted">Sign up for the DBZ EICHE newsletter to get all the latest fashion news, inspiration and style tips, as well as access to exclusive offers</p>
+                    <h5 class="text-white mt-3">Newsletter</h5>
                     <form action="#">
                         <div class="input-group mb-3">
                             <input class="form-control" type="text" placeholder="Email" aria-label="Email" aria-describedby="button-addon2">

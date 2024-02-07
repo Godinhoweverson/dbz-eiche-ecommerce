@@ -17,18 +17,30 @@ def add_to_cart(request, product_id):
     return render(request, 'cart/add-ons/menu_cart.html')
 
 def cart(request):
-    return render(request, 'cart/cart.html')
+    cart = Cart(request)
+    items = []
+    for item in cart:
+        product = Product.objects.get(pk=item['product_id'])
+        items.append({
+            'product_id': item['product_id'],
+            'product_display_name': product.product_display_name,
+            'image': product.image,
+            'price': product.price,
+            'total_price': item['total_price'],
+            'quantity': item['quantity'],
+        })
+    total_cost = cart.get_total_cost()
+    return render(request, 'cart/cart.html', {'items': items, 'total_cost': total_cost})
+
 
 def success(request):
     return render(request, 'cart/success.html')
 
 def update_cart(request, product_id, action):
- 
     cart = Cart(request)
-
     if action == 'increment':
         cart.increment_quantity(product_id)
-        messages.success(request, f"Product Incremented")
+        messages.success(request, f" Incremented")
     elif action == 'decrement':
         cart.decrement_quantity(product_id)
         messages.success(request, f"removed 1 item from the cart!")
@@ -50,7 +62,7 @@ def update_cart(request, product_id, action):
 
     else:
         item = None
-
+   
     response = render(request, 'cart/add-ons/cart_item.html', {'item': item})
     response['HX-Trigger'] = 'update-menu-cart'
 

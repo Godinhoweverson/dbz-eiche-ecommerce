@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http.response import Http404
 from mainshop.models import Category, Product, Comment
-from .forms import CommentForm
+from cart.cart import Cart
+from .forms import CommentForm, EditCommentForm
 from django.db.models import Q
 from django.core.paginator import Paginator
 from utils.pagination import make_pagination_range
@@ -40,6 +41,9 @@ def details_products(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     comments = product.comment_set.all().order_by('created_at')
  
+    cart = Cart(request)
+    in_cart = cart.get_item(product_id) is not None
+    
     paginator = Paginator(comments, 2)
     page = request.GET.get('page')
     comments = paginator.get_page(page)
@@ -60,7 +64,28 @@ def details_products(request, product_id):
         else:
             return redirect('account_login')
        
-    return render(request, 'products/details_product.html', {'product': product, 'categories': categories, 'form': form, 'comments': comments})
+    return render(request, 'products/details_product.html', {'product': product, 'categories': categories, 'form': form, 'comments': comments, 'in_cart':in_cart})
+
+
+def edit_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    form = EditCommentForm(instance=comment)
+    
+    if request.method == 'POST':
+        form = EditCommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            form.save()
+            return redirect('details_products', product_id=comment.product.id)
+    
+    return render(request, 'global/partials/edit_comment.html', {'form': form, 'comment': comment})
+
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    if request.method == 'POST':
+        comment.delete()
+        return redirect('details_products', product_id=comment.product.id)
+    return render(request, 'global/partials/delete_comment.html', {'comment': comment})
+
 
 
 def search(request):

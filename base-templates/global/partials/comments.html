@@ -1,56 +1,75 @@
 {% load crispy_forms_tags %}
 
-
 <div class="text-center p-5 ">
     <h3><strong>Reviews</strong></h3>
-</div>
-<div class="row review-main-container">
-    <div>
+</div> 
+<div class="review-main-container ">
+    <div class="row">
+        
+        
         {% for comment in comments %}
-            <div class="user-information">
-                <div>
-                    <h4 class="pt-3 font-weight-bold"> {{ comment.user }}</h4>
+        <div class="col-12 mt-3">
+            <div class="row justify-content-center">
+                <div class="col-2"></div>
+                <div class="col-12 col-md-8">
+                    <p class="font-weight-bold"><i class="fa-regular fa-user p-1 fw-bold"></i> {{ comment.user }}</p>
                 </div>
-                <div>
-                    <span>{{ comment.text }}</span>
-                </div>
-                <div>
-                    <span>{{ comment.created_at }}</span>
+                <div class="col-12 col-md-2">
+                    <a href="{% url 'edit_comment' comment.id %}"class="text-decoration-none" id="edit-comment"> <i class="fa-solid fa-pen"></i></a>
+                    <a href="{% url 'delete_comment' comment.id %}"class="text-decoration-none ps-2" id="delete-comment"> <i class="fa-solid fa-x"></i></a>
+                    
                 </div>
             </div>
-            
-        {% endfor %} 
-
-        <div class="pagination-review text-center ">
-            <span class="step-links">
-                {% if comments.has_previous %}
-                    <a href="?page={{ comments.previous_page_number }}" class="text-decoration-none"><i class="fa-solid fa-angle-left"></i></a>
-                {% endif %}
-        
-                <span class="current">
-                    {{ comments.number }} of {{ comments.paginator.num_pages }}
-                </span>
-        
-                {% if comments.has_next %}
-                    <a href="?page={{ comments.next_page_number }}" class="text-decoration-none"><i class="fa-solid fa-angle-right"></i></a>
-                {% endif %}
-            </span>
         </div>
-
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <div class="col-2"></div>
+                <div class="col-12 col-md-8">
+                    <p>{{ comment.text }} </p>
+                </div>
+                <div class="col-12 col-md-2">
+                    <p> {{ comment.created_at }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %} 
         {% if user.is_authenticated %}
+        <div class="col-12">
             <form method="POST">
                 {% csrf_token %}
-                {{ form|crispy }}
-                <div class="btns">
-                    <button type="submit" class="btn btn-outline-dark btn-sm">Publish</button>
-                    <button type="button" class="btn btn-outline-dark btn-sm">Update</button>
-                    <button type="button" class="btn btn-outline-dark btn-sm">Delete</button>
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-12 col-md-8">
+                        {{ form|crispy }}
+                    </div>
+                    <div class="col-12 col-md-2 position-relative btn-comment">    
+                        <button class="btn btn-dark btn-sm  position-absolute bottom-0 mb-3 px-3" type="submit">Comment</button>
+                    </div>
                 </div>
-                
             </form>
+        </div>
         {% else %}
+        <div class="col-12">
             <p class="text-center pt-3">You must be Logged in to post a comment <a href="{% url 'account_login' %}">click here</a> to login </p>
+        </div>
         {% endif %}
-    </div>
-</div> 
 
+        <div class="col-12 text-center mb-5">
+            <div class="pagination-review">
+                <span class="step-links">
+                    {% if comments.has_previous %}
+                    <a href="?page={{ comments.previous_page_number }}" class="text-decoration-none"><i class="fa-solid fa-angle-left"></i></a>
+                    {% endif %}
+            
+                    <span class="current">
+                        {{ comments.number }} of {{ comments.paginator.num_pages }}
+                    </span>
+            
+                    {% if comments.has_next %}
+                    <a href="?page={{ comments.next_page_number }}" class="text-decoration-none"><i class="fa-solid fa-angle-right"></i></a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

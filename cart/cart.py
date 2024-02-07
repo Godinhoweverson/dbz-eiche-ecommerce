@@ -1,5 +1,4 @@
 from django.conf import settings
-
 from mainshop.models import Product
 
 class Cart(object):
@@ -17,7 +16,7 @@ class Cart(object):
             product_id = int(product_id)
             try:
                 product = Product.objects.get(pk=product_id)
-                item['product'] = product.to_json_serializable()
+                item['product_id'] = product_id
                 item['total_price'] = int(product.price * item['quantity'])
                 yield item
             except Product.DoesNotExist:
@@ -34,7 +33,7 @@ class Cart(object):
         product_id = str(product_id)
 
         if product_id not in self.cart:
-            self.cart[product_id] = {'quantity': 1, 'id': product_id}
+            self.cart[product_id] = {'quantity': 1}
         
         if update_quantity:
             self.cart[product_id]['quantity'] += int(quantity)
@@ -58,7 +57,7 @@ class Cart(object):
             self.cart[product_id]['quantity'] -= 1
 
             if self.cart[product_id]['quantity'] <= 0:
-                self.remove(product_id)
+                self.remove_item(product_id)
             else:
                 self.save()
     
@@ -74,10 +73,14 @@ class Cart(object):
         self.session.modified = True
     
     def get_total_cost(self):
-        for p in self.cart.keys():
-            self.cart[str(p)]['product'] = Product.objects.get(pk=p)
-
-        return int(sum(item['product'].price * item['quantity'] for item in self.cart.values()))
+        total_cost = 0
+        for product_id, item in self.cart.items():
+            try:
+                product = Product.objects.get(pk=int(product_id))
+                total_cost += int(product.price) * item['quantity']
+            except Product.DoesNotExist:
+                pass
+        return total_cost
     
     def get_item(self, product_id):
         if str(product_id) in self.cart:

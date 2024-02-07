@@ -4,11 +4,11 @@
 
 {% block content %}
 
-<div class="container container-form">
+<div class="container container-form mb-5">
     <div class="col-12 my-5">
         <h1 class="text-center">Edit account</h1>
     </div>
-    <form method="post" action="{% url 'dashboard:edit_myaccount' %}" class="mx-auto w-50 shadow-sm p-3 mb-5 bg-body-tertiary rounder">
+    <form method="post" action="{% url 'dashboard:edit_myaccount' %}" class="mx-auto edit-profile shadow-sm p-3 mb-5 bg-body-tertiary rounder">
         {% csrf_token %}
         <div class="row">
             <div class="col-6">

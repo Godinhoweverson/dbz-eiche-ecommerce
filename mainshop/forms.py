@@ -9,4 +9,11 @@ class CommentForm(forms.ModelForm):
         fields = ('text',)
 
 
-        
+class EditCommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('text',)  
+
+    def __init__(self, *args, **kwargs):
+        super(EditCommentForm, self).__init__(*args, **kwargs)
+        self.fields['text'].widget = forms.Textarea(attrs={'rows': 4})   

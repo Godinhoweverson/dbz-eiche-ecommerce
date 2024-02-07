@@ -29,7 +29,7 @@
                     </div>
                     <hr>
                 </div>
-                {% for item in cart %}
+                {% for item in items %}
                     {% include 'cart/add-ons/cart_item.html' %}
         
                 {% endfor %}
@@ -45,7 +45,7 @@
                         <a href="{% url 'main_page' %}" class="btn btn-outline-dark w-50 p-2 m-2">CONTINUE SHOPPING</a>
                         <a href="{% url 'checkout' %}" class="btn btn-dark w-50 p-2 m-2">Checkout</a>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 mb-5">
                         <div class="container">
                             <div class="row row-cols-2">
                                 <div class="col p-2 fw-bold">
@@ -81,7 +81,10 @@
      <!-- Cart  -->
 
      <script>
+
+
     function updateCart(productId, action) {
+        console.log(productId, action)
         fetch(`update_cart/${productId}/${action}/`, {
             method: 'GET',
             headers: {

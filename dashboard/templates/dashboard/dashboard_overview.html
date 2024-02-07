@@ -3,8 +3,8 @@
 
 {% block content %}
 
-<div class="container mt-5 h-100">
-    <div class="row">
+<div class="container my-5 dashboard-container">
+    <div class="row mb-5">
         <div class="col-sm-3 shadow-sm p-3 mb-5 bg-body-tertiary rounded">
             <div class="col">
                 <h1 class="mb-5">Profile</h1>
@@ -45,7 +45,9 @@
                     <h2 class="text-center fw-bold">Orders</h2>
                 </div>
                 <div class="row">
+                {% if request.user.orders.all %}
                     {% for order in request.user.orders.all %}
+                    <hr>
                         <div class="col-12 mt-4">
                             <div class="row">
                                 <div class="col-4">
@@ -88,6 +90,15 @@
                                 </div>
                             </div>
                     {% endfor %}  
+                {% else %}
+                <div class="d-flex align-items-center text-center container-form mb-3">
+                    <div class="col-sm-12 ">
+                        <h3 class="fw-bold"> Order history is Empty</h3>
+                        <h4>Add something to make you happy :)</h4>
+                        <a href="{% url 'main_page' %}" class="btn btn-dark m-3" data-abc="true">Shopping</a>
+                    </div>
+                </div>
+                {% endif %}
                 </div>
             </div>
         </div>
