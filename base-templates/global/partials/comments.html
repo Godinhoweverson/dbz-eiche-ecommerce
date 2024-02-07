@@ -43,14 +43,14 @@
                         {{ form|crispy }}
                     </div>
                     <div class="col-12 col-md-2 position-relative btn-comment">    
-                        <button class="btn btn-dark btn-sm  position-absolute bottom-0 mb-3 px-3" type="submit">Comment</button>
+                        <button class="btn btn-dark btn-sm  position-absolute bottom-0 mb-3 px-3" type="submit">Publish</button>
                     </div>
                 </div>
             </form>
         </div>
         {% else %}
         <div class="col-12">
-            <p class="text-center pt-3">You must be Logged in to post a comment <a href="{% url 'account_login' %}">click here</a> to login </p>
+            <p class="text-center pt-3">You must be Logged in to post a Review <a href="{% url 'account_login' %}">click here</a> to login </p>
         </div>
         {% endif %}
 
