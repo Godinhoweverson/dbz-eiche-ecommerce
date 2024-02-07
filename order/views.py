@@ -17,7 +17,7 @@ def start_order(request):
     total_price = 0
 
     items = []
-    YOUR_URL = 'https://8000-godinhoweve-dbzeicheeco-a7zpjf6y18f.ws-eu108.gitpod.io'
+    YOUR_URL = 'dbz-eiche-b8d414c8e346.herokuapp.com'
 
     for item in cart:
 

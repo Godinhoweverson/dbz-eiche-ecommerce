@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-DEBUG = True
+DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['dbz-eiche-b8d414c8e346.herokuapp.com', 'localhost', '8000-godinhoweve-dbzeicheeco-a7zpjf6y18f.ws-eu108.gitpod.io']
 
