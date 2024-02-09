@@ -87,7 +87,6 @@ def delete_comment(request, comment_id):
     return render(request, 'global/partials/delete_comment.html', {'comment': comment})
 
 
-
 def search(request):
     categories = Category.objects.all()
     search_term = request.GET.get('q', '').strip()
@@ -107,3 +106,11 @@ def search(request):
         'categories': categories,
     })
 
+def handler404(request, exception):
+    return render(request, 'status-code/not_found404.html', status=404)
+
+def handler500(request, exception):
+    return render(request, 'status-code/server_error500.html', status=500)
+
+def handler403(request, exception):
+    return render(request, 'status-code/forbidden403.html', status=403)

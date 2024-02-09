@@ -14,3 +14,7 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'mainshop.views.handler404'
+handler505 = 'mainshop.views.handler505'
+handler403 = 'mainshop.views.handler403'

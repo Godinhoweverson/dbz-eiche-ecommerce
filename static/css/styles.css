@@ -62,7 +62,11 @@ h1, h2, h3, h4{
 }
 
 .container-form{
-    min-height: 680px;
+    height: 75vh;
+}
+
+.form-width {
+    width: 50% !important;
 }
 
 /* TOASTS */
@@ -406,6 +410,10 @@ max-height: 30rem;
         padding: 1rem 0;
     }
 
+    /* FORMS */
+    .form-width {
+        width: 80% !important;
+    }
     
     /* Edit Profile */
 
@@ -442,6 +450,7 @@ max-height: 30rem;
         height: var(--spacing-gutter-medium);
     }
 
+    
     /* Edit Profile */
 
 .edit-profile{

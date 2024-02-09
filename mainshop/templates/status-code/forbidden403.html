@@ -1,0 +1,15 @@
+{% extends 'global/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="d-flex align-items-center text-center container-form mb-3">
+    <div class="col-sm-12 ">
+        <h1 class="fw-bold m-5">403</h1>
+        <h4 class="mb-5">That's an error. :)</h4>
+        <p>We're sorry, you don't have permisson to access.</p>
+        <a href="{% url 'main_page' %}" class="btn btn-dark m-3" data-abc="true">Go to Home</a>
+    </div>
+</div>
+{% endblock content %}
+
+{% include 'global/partials/footer.html'%}

@@ -1,0 +1,15 @@
+{% extends 'global/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="d-flex align-items-center text-center container-form mb-3">
+    <div class="col-sm-12 ">
+        <h1 class="fw-bold m-5">404</h1>
+        <h4 class="mb-5">Look like you're lost :)</h4>
+        <p>The page you're looking for is not available!</p>
+        <a href="{% url 'main_page' %}" class="btn btn-dark m-3" data-abc="true">Go to Home</a>
+    </div>
+</div>
+{% endblock content %}
+
+{% include 'global/partials/footer.html'%}

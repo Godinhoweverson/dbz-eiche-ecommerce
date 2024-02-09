@@ -12,7 +12,7 @@
       <div class="text-center my-5">
         <h1 class="">Sign in</h1>
       </div>
-      <form class="login w-50 mx-auto shadow-sm p-3 my-5 bg-body-tertiary rounded" method="POST" action="{% url 'account_login' %}">
+      <form class="login form-width mx-auto shadow-sm p-3 my-5 bg-body-tertiary rounded" method="POST" action="{% url 'account_login' %}">
         <div class="mb-3">
           {% csrf_token %}
           {% for field in form %}

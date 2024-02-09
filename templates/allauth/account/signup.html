@@ -7,14 +7,14 @@
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
-<div class="authentificator-container">
-  <div class="container pb-4">
-    <div class="text-center p-4">
+<div class="container-form">
+  <div class="container pb-3">
+    <div class="text-center">
       <h1>{% trans "Sign Up" %}</h1>
     </div>
     
     <div class="row">
-      <form class="signup w-50 mx-auto shadow-sm p-3 my-5 bg-body-tertiary rounded" id="signup_form" method="post" action="{% url 'account_signup' %}">
+      <form class="signup form-width mx-auto shadow-sm p-3 my-5 bg-body-tertiary rounded" id="signup_form" method="post" action="{% url 'account_signup' %}">
         <div class="text-center p-4">
           <p>{% blocktrans %}Already have an account? Then please <a class="text-decoration-none fw-bold" href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
         </div>
