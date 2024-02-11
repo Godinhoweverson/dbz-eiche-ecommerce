@@ -192,12 +192,10 @@ if 'USE_AWS' in os.environ:
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
-
-if not os.getenv('DEVELOPMENT') or os.getenv('DEVELOPMENT').lower() == 'false':
-    STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
-    STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
-    STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
-    DEFAULT_FROM_EMAIL = 'dbz-eiche.example.com'
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
+STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
+DEFAULT_FROM_EMAIL = 'dbz-eiche.example.com'
 
 
 if 'DEVELOPMENT' in os.environ:

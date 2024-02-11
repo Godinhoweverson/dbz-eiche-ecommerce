@@ -41,7 +41,6 @@ def start_order(request):
         }
         )
 
-
     stripe.api_key = settings.STRIPE_SECRET_KEY
     session  = stripe.checkout.Session.create(
         payment_method_types = ['card'],

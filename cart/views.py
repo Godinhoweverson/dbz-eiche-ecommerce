@@ -83,7 +83,7 @@ def remove_from_cart(request, product_id):
 
 @login_required
 def checkout(request):
-    pub_key = settings.STRIPE_API_KEY_PUBLISHABLE 
+    pub_key = settings.STRIPE_PUBLIC_KEY
     return render(request, 'cart/checkout.html', {'pub_key': pub_key})
 
 def hx_menu_cart(request):
