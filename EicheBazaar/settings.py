@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-DEBUG = False
+DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['dbz-eiche-b8d414c8e346.herokuapp.com', 'localhost', '8000-godinhoweve-dbzeicheeco-a7zpjf6y18f.ws-eu108.gitpod.io']
 
@@ -19,8 +19,6 @@ CSRF_TRUSTED_ORIGINS = [
     'https://8000-godinhoweve-dbzeicheeco-a7zpjf6y18f.ws-eu108.gitpod.io',
 ]
 
-STRIPE_API_KEY_PUBLISHABLE = 'pk_test_51ONG2KDSqKG0ZqTE8rGuHwsdQwagXU8suF7BTiXok0noJFoYNeyLIFgSktVDY8pURSp3V8gMEuqaQeslbDe332aw00tZVB2a7a'
-STRIPE_API_KEY_HIDDEN = 'sk_test_51ONG2KDSqKG0ZqTEMVDwM8nS83CDB0MZual7rgqQRH9zLDHplvsA9rN34UnTWcPyEm1jda13vaB5kHji3mhoEAO100d4x2Im0F'
 
 SESSION_COOKIE_AGE = 86400
 CART_SESSION_ID = 'cart'
@@ -194,10 +192,12 @@ if 'USE_AWS' in os.environ:
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
-STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
-STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
-STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
-DEFAULT_FROM_EMAIL = 'dbz-eiche.example.com'
+
+if not os.getenv('DEVELOPMENT') or os.getenv('DEVELOPMENT').lower() == 'false':
+    STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
+    STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
+    STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
+    DEFAULT_FROM_EMAIL = 'dbz-eiche.example.com'
 
 
 if 'DEVELOPMENT' in os.environ:

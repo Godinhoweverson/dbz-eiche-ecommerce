@@ -35,3 +35,5 @@ fetch(`remove_from_cart/${productId}/`, {
 })
 .catch(error => console.error('Error removing item from cart:', error));
 }
+
+
