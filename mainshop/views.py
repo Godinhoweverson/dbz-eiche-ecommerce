@@ -114,3 +114,6 @@ def handler500(request, exception):
 
 def handler403(request, exception):
     return render(request, 'status-code/forbidden403.html', status=403)
+
+def privacy_policy(request):
+    return render(request, 'global/partials/privacy_policy.html')
