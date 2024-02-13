@@ -9,7 +9,9 @@
       <div class="products products-list rounded-2 mx-auto">
         <div class="product-image-container">
             <a href="{% url 'details_products' product_id=product.id %}">
+              {% if product.image %}
                 <img class="w-100 rounded-2" src="{{ product.image.url }}" alt="{{ product.product_display_name }}">
+              {% endif %}
             </a>
         </div>
         <div class="product-title-container">
