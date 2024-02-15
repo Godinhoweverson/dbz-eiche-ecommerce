@@ -13,6 +13,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = False
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 ALLOWED_HOSTS = ['dbz-eiche-b8d414c8e346.herokuapp.com', 'localhost', '8000-godinhoweve-dbzeicheeco-z410sy9qkk4.ws-eu108.gitpod.io']
 
 CSRF_TRUSTED_ORIGINS = [
