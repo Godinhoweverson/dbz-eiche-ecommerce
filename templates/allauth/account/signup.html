@@ -6,15 +6,15 @@
 {% block title %}Sign up| {% endblock %}
 
 {% block content %}
-<div class="container-form">
+<div class="container-form my-5">
   <div class="container pb-3">
     <div class="text-center">
       <h1>{% trans "Sign Up" %}</h1>
     </div>
     
     <div class="row">
-      <form class="signup form-width mx-auto shadow-sm p-3 my-5 bg-body-tertiary rounded" id="signup_form" method="post" action="{% url 'account_signup' %}">
-        <div class="text-center p-4">
+      <form class="signup form-width mx-auto shadow-sm bg-body-tertiary rounded" id="signup_form" method="post" action="{% url 'account_signup' %}">
+        <div class="text-center p-2">
           <p>{% blocktrans %}Already have an account? Then please <a class="text-decoration-none fw-bold" href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
         </div>
         <div class="mb-3">

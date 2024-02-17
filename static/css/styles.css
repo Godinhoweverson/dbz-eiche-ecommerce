@@ -307,10 +307,9 @@ a:hover, a:focus {
 
 /* Details-Products */
 
-.main-details-container{
-    padding: var(--spacing-gutter-large);
+.sub-container{
+    margin: var(--spacing-gutter-large);
 }
-
 .container-product-details {
     padding: var(--spacing-gutter-medium);
 }
@@ -416,7 +415,11 @@ max-height: 30rem;
     width: 50%;
 }
 
+/* FORMS
 
+.signup{
+    min-height: 50rem !important;
+} */
 /* Media queries */
 
 @media (max-width: 900px){
