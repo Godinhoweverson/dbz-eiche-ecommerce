@@ -1,7 +1,6 @@
-<button type="button" class="btn position-relative pb-0">
-    <a href="{% url 'cart' %}" id="menu-cart-button"class="nav-link position-relative p-0"><i class="fas fa-shopping-bag ps-1"></i>
-      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-        {{ cart|length }}
-      </span>
-    </a>
-</button>
+<a href="{% url 'cart' %}" id="menu-cart-button" class="btn position-relative pb-0 nav-link position-relative p-0 mt-1">
+  <i class="fas fa-shopping-bag ps-1"></i>
+  <span class="position-absolute top-0 translate-middle badge rounded-pill bg-danger">
+      {{ cart|length }}
+  </span>
+</a>

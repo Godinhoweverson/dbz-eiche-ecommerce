@@ -1,35 +1,37 @@
 <div class="categories-container">
     <div class="row">
         <div class="categories">
-              <ul class="list-inline text-center">
-                  <li class="list-inline-item"><a class="text-decoration-none all-categories" href="{% url 'main_page' %}">All categories</a></li>
-                  <div class="btn-group pb-1">
-                      <button class="btn btn-link btn-lg dropdown-toggle text-decoration-none p-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Men's
-                      </button>
-                      <ul class="dropdown-menu">
-                          {% for category in categories %}
-                              {% if category.display_categories != "Sweatshirt female" and category.display_categories != "Hoodies female" %}
-                                  <li class="dropdown-item"><a class="text-decoration-none" href="{% url 'main_page_category' category.id %}">{{ category.display_categories }}</a></li>
-                              {% endif %}
-                          {% endfor %}
-                      </ul>
-                  </div>
-                  <div class="btn-group pb-1">
-                      <button class="btn btn-link btn-lg dropdown-toggle text-decoration-none p-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Womens
-                      </button>
-                      <ul class="dropdown-menu">
-                          {% for category in categories %}
-                            {% if category.display_categories == "Sweatshirt female" or category.display_categories == "Hoodies female" %}
-                              <li class="dropdown-item"><a href="{% url 'main_page_category' category.id %}" class="text-decoration-none">{{ category.display_categories }}</a></li>
+            <ul class="list-inline text-center">
+                <li class="list-inline-item"><a class="text-decoration-none all-categories" href="{% url 'main_page' %}">All categories</a></li>
+                <li class="list-inline-item">
+                <div class="btn-group pb-1">
+                    <button class="btn btn-link btn-lg dropdown-toggle text-decoration-none p-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Men's
+                    </button>
+                    <ul class="dropdown-menu">
+                        {% for category in categories %}
+                            {% if category.display_categories != "Sweatshirt female" and category.display_categories != "Hoodies female" %}
+                                <li class="dropdown-item"><a class="text-decoration-none" href="{% url 'main_page_category' category.id %}">{{ category.display_categories }}</a></li>
                             {% endif %}
-                          {% endfor %}
-                      </ul>
-                  </div>
-              </ul>
-          </div>
-      </div>
-  </div>
-</div>
+                        {% endfor %}
+                    </ul>
+                </div>
+                </li>
+                <li class="list-inline-item">
+                    <div class="btn-group pb-1">
+                        <button class="btn btn-link btn-lg dropdown-toggle text-decoration-none p-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Womens
+                        </button>
+                        <ul class="dropdown-menu">
+                            {% for category in categories %}
+                                {% if category.display_categories == "Sweatshirt female" or category.display_categories == "Hoodies female" %}
+                                <li class="dropdown-item"><a href="{% url 'main_page_category' category.id %}" class="text-decoration-none">{{ category.display_categories }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>

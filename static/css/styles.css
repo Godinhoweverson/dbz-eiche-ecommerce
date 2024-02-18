@@ -474,11 +474,9 @@ max-height: 30rem;
     
     /* Edit Profile */
 
-.edit-profile{
-    width: 100%;
-}
-
-
+    .edit-profile{
+        width: 100%;
+    }
 }
 
 

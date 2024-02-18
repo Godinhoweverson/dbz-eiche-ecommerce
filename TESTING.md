@@ -252,3 +252,69 @@ This report provides a comprehensive overview of the unit tests executed to vali
 
 
 ![TESTS](/media/readme/testing/automated_tests.jpeg)
+
+
+## PEP8 Linter
+
+- All Python files  have undergone scrutiny using the Code Institute PEP8 Linter. Attached are images showcasing the identified errors and the subsequent resolution after addressing them.
+
+
+### Cart APP
+
+- Cart - Errors
+
+![CART](/media/readme/python-linter/cart-error.jpeg)
+
+- Cart
+
+![CART](/media/readme/python-linter/cart.jpeg)
+
+- Views - Errors
+
+![VIEW](/media/readme/python-linter/view-cart-error.jpeg)
+
+- Views
+
+![VIEW](/media/readme/python-linter/view-cart.jpeg)
+
+
+### Dashboard APP
+
+![dashboard](/media/readme/python-linter/dashboard.jpeg)
+
+### Mainpage APP
+
+- Admin - Errors
+
+![mainpage](/media/readme/python-linter/admin-mainshop-errors.jpeg)
+
+- Admin 
+
+![mainpage](/media/readme/python-linter/admin-mainshop.jpeg)
+
+
+- Forms - Erros
+
+![mainpage](/media/readme/python-linter/forms-mainshop-errors.jpeg)
+
+- Forms
+
+![mainpage](/media/readme/python-linter/forms-mainshop.jpeg)
+
+- Views - Errors
+
+![mainpage](/media/readme/python-linter/view-mainshop-error.jpeg)
+
+- Views
+
+![mainpage](/media/readme/python-linter/view-mainshop.jpeg)
+
+### Order APP
+
+- Admin - Errors
+
+![order](/media/readme/python-linter/admin-order-errors.jpeg)
+
+- Admin 
+
+![order](/media/readme/python-linter/admin-order.jpeg)

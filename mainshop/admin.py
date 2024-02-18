@@ -1,11 +1,13 @@
 from django.contrib import admin
 from .models import Category, Product, Comment
 
+
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
-        'display_categories', 
+        'display_categories',
     )
+
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
@@ -14,12 +16,13 @@ class ProductAdmin(admin.ModelAdmin):
         'gender',
         'season',
         'description_product',
-        'price', 
-        'color', 
+        'price',
+        'color',
         'image',
-        'category', 
+        'category',
         'slug',
     )
+
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
@@ -31,5 +34,3 @@ class CommentAdmin(admin.ModelAdmin):
         'created_at',
 
     )
-
-

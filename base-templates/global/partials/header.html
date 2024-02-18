@@ -32,13 +32,13 @@
               </li>
             {% endif %}
             <li class="nav-item">
-              <div
+              <a
                 hx-get="{% url 'hx_menu_cart' %}"
                 hx-trigger="update-menu-cart from:body"
                 hx-swap="innerHTML"
               >
                 {% include 'cart/add-ons/menu_cart.html' %}
-              </div>
+              </a>
             </li>
           </ul>
         </div>

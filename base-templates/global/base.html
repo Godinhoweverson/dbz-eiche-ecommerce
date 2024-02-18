@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="{{ html_language }}">
 <head>
@@ -26,10 +25,9 @@
             {% endfor %}
         </div>
     {% endif %}
-
-<main class="main-content-container">
-    {% block content %}{% endblock content %}
-</main>
+    <main class="main-content-container">
+        {% block content %}{% endblock content %}
+    </main>
     {% include 'global/partials/pagination.html' %}
     {% include 'global/partials/footer.html' %}
     
