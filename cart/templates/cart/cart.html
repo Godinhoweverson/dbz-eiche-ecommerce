@@ -41,39 +41,42 @@
                 </div>
                 <div class="col-12">
                     <div class="row">
-                        <div class="col-6">
-                            <a href="{% url 'main_page' %}" class="btn btn-outline-dark w-50 p-2 m-2">CONTINUE SHOPPING</a>
-                            <a href="{% url 'checkout' %}" class="btn btn-dark w-50 p-2 m-2">Checkout</a>
-                        </div>
-                        <div class="col-6 mb-5">
+                        <div class="col-12 mb-5">
                             <div class="container">
                                 <div class="row row-cols-2">
                                     <div class="col p-2 fw-bold">
                                         TOTAL:
                                         <hr>
                                     </div>
-                                    <div class="col text-end p-2 fw-bold"> <span
-                                        hx-get="{% url 'hx_cart_total' %}"
-                                        hx-trigger="update-menu-cart from:body"
-                                        hx-swap="innerHTML"
-                                    >
-                                    {% include 'cart/add-ons/cart_total.html' %}
-                                    </span>
-                                    <hr>
-                                </div>
+                                    <div class="col text-end p-2 fw-bold">
+                                        <span
+                                            hx-get="{% url 'hx_cart_total' %}"
+                                            hx-trigger="update-menu-cart from:body"
+                                            hx-swap="innerHTML"
+                                        >
+                                            {% include 'cart/add-ons/cart_total.html' %}
+                                        </span>
+                                        <hr>
+                                    </div>
                                     <div class="col p-2 fw-bold">
-
                                         Delivery:
-
                                     </div>
                                     <div class="col text-end p-2 fw-bold">
-                                        FREE</div>
+                                        FREE
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    
+                        <div class="col-md-6">
+                            <button class="btn btn-outline-dark w-100 w-md-50 p-2 m-2"><a href="{% url 'main_page' %}" class="text-decoration-none text-reset">CONTINUE SHOPPING</a></button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-dark w-100 w-md-50 p-2 m-2"><a href="{% url 'checkout' %}" class="text-reset text-decoration-none">Checkout</a></button>
+                        </div>
+ 
                     </div>
                 </div>
+                
                 
             </div>   
         </div>  

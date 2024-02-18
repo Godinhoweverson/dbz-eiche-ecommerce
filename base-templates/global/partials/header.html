@@ -1,52 +1,48 @@
 <header class="header-container container">
   <div id="nav-section">
     <nav class="navbar navbar-expand-md navbar-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">DBZ EICHE</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="nav-elements collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav text-center ms-auto">              
-          {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'dashboard:dashboard_overview' %}">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
-          </li>
-         
-          {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_login' %}">Sign in</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_signup' %}">Create account</a>  
-          </li>
-        
-          {% endif %}
-          <li class="nav-item">
-            <div
-              hx-get="{% url 'hx_menu_cart' %}"
-              hx-trigger="update-menu-cart from:body"
-              hx-swap="innerHTML"
-            >
-              {% include 'cart/add-ons/menu_cart.html' %}
-            </div>
-            
-          </li>
-        </ul>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">DBZ EICHE</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="nav-elements collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav text-center ms-auto">              
+            {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'dashboard:dashboard_overview' %}">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_login' %}">Sign in</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_signup' %}">Create account</a>  
+              </li>
+            {% endif %}
+            <li class="nav-item">
+              <div
+                hx-get="{% url 'hx_menu_cart' %}"
+                hx-trigger="update-menu-cart from:body"
+                hx-swap="innerHTML"
+              >
+                {% include 'cart/add-ons/menu_cart.html' %}
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
     </nav>
   </div>
-
 </header>

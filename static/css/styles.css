@@ -175,7 +175,7 @@ h1, h2, h3, h4, h5{
     font-size: 1.25rem;
     color: var(--color-black);
     transform: scale(1);
-    transition: all 300 ms ease-in-out;
+    transition: all 300ms ease-in-out;
 }
 
 .categories li a:hover {
@@ -216,7 +216,7 @@ h1, h2, h3, h4, h5{
 .products{
     box-shadow: -5px 5px 10px rgba(0, 0, 0, .2);
     transform: scale(1);
-    transition: all 300 ms ease-in-out;
+    transition: all 300ms ease-in-out;
 }
 .products-list {
     max-width: 24rem;
@@ -317,7 +317,7 @@ a:hover, a:focus {
 .image-details{
     box-shadow: -5px 5px 10px rgba(0, 0, 0, .4);
     transform: scale(1);
-    transition: all 300 ms ease-in-out;
+    transition: all 300ms ease-in-out;
 }
 
 .image-details:hover{
