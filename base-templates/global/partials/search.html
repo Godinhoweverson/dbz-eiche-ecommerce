@@ -6,7 +6,7 @@
         <div class="text-center">
             <form action="{% url 'search' %}" method="GET" class="search-form">
                 <input type="search" class="search-input" name="q" value="{{ search_term }}" placeholder="Search Products" required>
-                <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+                <button type="submit" class="search-btn"><i class="fas fa-search" aria-label="search-btn" ></i></button>
             </form>
         </div>
         {% include 'pages/categories.html'%}

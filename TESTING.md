@@ -318,3 +318,177 @@ This report provides a comprehensive overview of the unit tests executed to vali
 - Admin 
 
 ![order](/media/readme/python-linter/admin-order.jpeg)
+
+
+Validator Test
+
+I utilized the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)  Validator to thoroughly test all CSS code.
+
+![CSS](/media/readme/testing/css-validator.jpeg)
+
+
+## Accessibility
+
+I utilized Lighthouse to generate extensive reports on both performance and accessibility for the desktop and mobile versions of the site. The images below showcases the results for the Home page on desktop and mobile, respectively.
+
+### Mainpage
+
+- DESKTOP
+
+![Mainshop-lighthouse](/media/readme/lighthouse/desktop-mainshop.png)
+
+![Mainshop-lighthouse](/media/readme/lighthouse/desktop-mainshop-improved.png)
+
+<strong>Note:</strong>
+After making some modifications, I have enhanced the performance and accessibility of the document. These improvements include organizing headings in a logical order and adding aria-label attributes to links for improved accessibility
+
+- MOBILE
+
+![Mainshop-lighthouse](/media/readme/lighthouse/mobile-mainshop.png)
+
+<strong>Note:</strong>
+The performance could be further optimized. The next step will involve addressing interactions and fixing the proper size of images for improved efficiency.
+
+
+### Details product page
+
+- DESKTOP
+
+![Details-lighthouse](/media/readme/lighthouse/desktop-details-page.png)
+
+
+- Mobile
+
+![Details-lighthouse](/media/readme/lighthouse/mobile-details-page.png)
+
+### Cart
+
+- DESKTOP
+
+![cart-lighthouse](/media/readme/lighthouse/desktop-cart.png)
+
+
+- Mobile
+
+![cart-lighthouse](/media/readme/lighthouse/mobile-cart.png)
+
+
+
+
+### Dashboard
+
+- DESKTOP
+
+![Dashboard-lighthouse](/media/readme/lighthouse/desktop-dashboard.png)
+
+
+- Mobile
+
+![Dashboard-lighthouse](/media/readme/lighthouse/mobile-dashboard.png)
+
+### Checkout
+
+- DESKTOP
+
+![checkout-lighthouse](/media/readme/lighthouse/desktop-dashboard.png)
+
+
+- Mobile
+
+![checkout-lighthouse](/media/readme/lighthouse/mobile-checkout.png)
+
+
+### Forms
+
+#### Sign up
+
+- DESKTOP 
+
+![signup-lighthouse](/media/readme/lighthouse/desktop-signup.png)
+
+
+- Mobile 
+
+![signup-lighthouse](/media/readme/lighthouse/mobile-signup.png)
+
+
+#### Sign in
+
+- DESKTOP 
+
+![signin-lighthouse](/media/readme/lighthouse/desktop-signin.png)
+
+
+- Mobile 
+
+![signin-lighthouse](/media/readme/lighthouse/mobile-signin.png)
+
+
+
+## Bug Report
+
+### Problem
+
+During development, the following error occurred when attempting to use the ImageField for the Product model:
+
+- django.core.management.base.SystemCheckError: SystemCheckError: System check identified some issues:
+ERRORS:
+mainshop.Product.image: (fields.E210) Cannot use ImageField because Pillow is not installed.
+HINT: Get Pillow at https://pypi.org/project/Pillow/ or run command "python -m pip install Pillow".
+
+### Solution
+To address this issue, the missing dependency, Pillow, needs to be installed. Follow the provided hint to install Pillow using pip:
+
+- python -m pip install Pillow
+
+Once Pillow is installed, the ImageField should function correctly for the Product model.
+
+### Problem
+
+During development, an error occurred when running python manage.py migrate. The error was related to a unique key duplication (UniqueViolation) during the creation of the "mainshop_product_slug_key" index. This issue was primarily caused by conflicts in migrations, especially after merging migrations.
+
+Solution
+To address this issue, the following steps were performed:
+
+#### Removal of Previous Migrations:
+- All existing migrations in the mainshop/migrations/ folder were removed, except for the __pycache__ folder.
+rm mainshop/migrations/*
+
+#### Recreation of Migrations:
+Initial migrations for the mainshop app were recreated.
+python manage.py makemigrations mainshop
+
+#### Migration Zero:
+The migration zero was executed to reset the database.
+python manage.py migrate mainshop zero
+
+#### Additional Checks:
+It was ensured that there were no pending migrations.
+python manage.py makemigrations
+
+The migration was run again to ensure everything was up-to-date.
+python manage.py migrate
+
+
+
+### Problem
+- Object of type 'Product' is not JSON serializable
+When attempting to serialize a Product object to JSON, the following error is encountered:
+
+TypeError: Object of type 'Product' is not JSON serializable
+
+- Cause
+The error occurs because the context or data being serialized contains an instance of the Product model. JSON serialization requires serializable data types, and model instances are not directly serializable to JSON.
+
+#### Resolution
+
+- Pass Product ID Instead of Instance
+Instead of passing the entire Product instance to the context or data being serialized, pass only the ID of the Product instance.
+
+- Retrieve Product When Needed
+With the Product ID available in the context or data, you can retrieve the corresponding Product instance from the database when needed.
+
+- Clear Cookies, Local Storage, and Cache
+
+If the error persists due to previously cached data, clear cookies, local storage, and cache to start afresh.
+By following these steps, you should be able to avoid the JSON serialization issue caused by attempting to serialize a non-serializable data type (such as a model instance) and ensure proper retrieval of the Product instance when needed.

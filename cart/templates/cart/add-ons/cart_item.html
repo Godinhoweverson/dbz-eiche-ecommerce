@@ -7,16 +7,15 @@
                     <img id="dashboard-image" src="{{ item.image.url }}" alt="{{ item.product_display_name }}">
                 </a>
             </div>
-            <div class="col-12 col-md-2 my-2">
+            <div class="col-12 col-md-2 my-2 text-center">
                 {{ item.product_display_name }}
-                {{ item.product.season }}
             </div>
             <div class="col-12 col-md-2 text-center my-2">
                 <button class="btn btn-sm btn-outline-dark" onclick="updateCart('{{ item.product_id }}', 'decrement')">-</button>
                 <span class="mx-2">{{ item.quantity }}</span>
                 <button class="btn btn-sm btn-outline-dark" onclick="updateCart('{{ item.product_id }}', 'increment')">+</button>
             </div>
-            <div class="col-12 col-md-2 my-2">
+            <div class="col-12 col-md-2 my-2 text-center">
                 <span class="mb-6 pt-1 text-gray-400">${{ item.total_price }}</span>
             </div>
             <div class="col-12 col-md-2 text-center my-2">
