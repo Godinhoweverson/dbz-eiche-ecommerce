@@ -1,39 +1,17 @@
 :root {
     --color-primary: #269fe6;
-    --color-primary-hover: #2086c2;
-    --color-primary-dark: #13141f;
-    --color-primary-dark-hover: #212336;
-    --color-primary-light: #d4ecfa;
-    --color-primary-light-hover: #bdd8e7;
-
     --color-white: #fff;
     --color-black: #000;
-
-    --color-dark-text: #444;
-    --color-info-light: #cce5ff;
     --color-debug-light: #cce5ff;
-    --color-success-light: #d4edda;
-    --color-alert-light: #fff3cd;
-    --color-warning-light: #fff3cd;
-    --color-error-light: #f8d7da;
-
     --color-info-dark: #4d86c4;
     --color-debug-dark: #4d86c4;
     --color-success-dark: #4a9c5d;
     --color-alert-dark: #927f40;
-    --color-warning-dark: #927f40;
     --color-error-dark: #da525d;
 
-    --color-gray-0: #f9f9f9;
-    --color-gray-1: #e0e0e0;
-    --color-gray-2: #c7c7c7;
-    --color-gray-3: #aeaeae;
-    --color-gray-4: #959595;
-    --color-gray-5: #7d7d7d;
-    --color-gray-6: #646464;
+    --color-gray-6: #545454;
     --color-gray-7: #4b4b4b;
-    --color-gray-8: #323232;
-    --color-gray-9: #191919;
+    --color-gray-8: #212529;
 
     --font-headings: 'Mulish', sans-serif;
     --font-primary: 'Oxygen', sans-serif;;
@@ -109,7 +87,7 @@ h1, h2, h3, h4, h5{
     font-size: 5rem;
 }
 .search-container {
-    background-color: #212529;
+    background-color:  var(--color-gray-8);
     padding: var(--spacing-gutter-large);
     height: 25%;
 } 
@@ -251,7 +229,7 @@ h1, h2, h3, h4, h5{
  .pag-item a{
     font-size: 1.5rem;
     padding: 5px;
-    color: #212529;
+    color:  var(--color-gray-8);
  }
 
  .current_page{
@@ -264,7 +242,7 @@ h1, h2, h3, h4, h5{
 /* Footer */
 
 footer {
-    background: #212529;
+    background:  var(--color-gray-8);
     padding: var(--spacing-gutter-medium);
     height: 30rem;
   }
@@ -284,18 +262,18 @@ a:hover, a:focus {
 }
 
 .form-control {
-  background: #212529;
-  border-color: #545454;
+  background:  var(--color-gray-8);
+  border-color: var(--color-gray-6);
 }
 
 .form-control:focus {
-  background: #212529;
+  background:  var(--color-gray-8);
 }
 
 /* Mailchimp */
 
 #mc_embed_signup{
-    background:#212529;
+    background: var(--color-gray-8);
     clear:left;
     font:14px Helvetica,Arial,sans-serif;
     width: 600px;
@@ -343,7 +321,7 @@ a:hover, a:focus {
 
 .pagination-review a, .current{
     font-size: 1rem;
-    color: #212529;
+    color:  var(--color-gray-8);
     padding: .30rem;
    }
 
@@ -415,11 +393,6 @@ max-height: 30rem;
     width: 50%;
 }
 
-/* FORMS
-
-.signup{
-    min-height: 50rem !important;
-} */
 /* Media queries */
 
 @media (max-width: 900px){

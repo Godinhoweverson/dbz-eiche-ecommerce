@@ -9,10 +9,6 @@ At Dbz Eiche, we're passionate about fashion and dedicated to providing you with
 Access the Fully Deployed Project You can explore the live version of our project by visiting the following link:
 
 
-I have conducted a thorough evaluation to ensure the responsiveness of my website through a comprehensive [Responsive Design check](/).
-
-![responsive](#)
-
 ## Table Of Contents
 
 1. [UX Design](#ux-design)
@@ -187,6 +183,7 @@ At DBZ Eiche, our business model revolves around providing our customers with an
 ##### Social Media Engagement: 
 - We leverage platforms like Facebook, to connect with our audience, showcase our latest collections, and engage in meaningful conversations with our followers.
 
+[Meta Business Suite](https://www.facebook.com/people/Dbz-Eiche/61556263235702/)
 
 ![FACEBOOK](/media/readme/facebook/facebook.jpg)
 
@@ -198,7 +195,7 @@ At DBZ Eiche, our business model revolves around providing our customers with an
 #### Email Marketing:
 - Our newsletter serves as a direct line of communication with our customers. We use email marketing to share updates on new arrivals, exclusive promotions, and special events, nurturing customer loyalty and driving sales.
 
-A signup form for a newsletter was added using Inuit Mailchimp to the site where the user can sign up for a newsletter to receive offers.
+A signup form for a newsletter was added using Inuit [Main Chimp](https://mailchimp.com/) to the site where the user can sign up for a newsletter to receive offers.
 
 ![NEWSLETTER](/media/readme/newsletter/newsletter.jpg)
 
@@ -206,7 +203,7 @@ A signup form for a newsletter was added using Inuit Mailchimp to the site where
 #### Search Engine Optimization (SEO): 
 - We optimize our website content to improve visibility on search engine results pages. By targeting relevant keywords and optimizing product descriptions, we increase organic traffic and attract potential customers who are actively searching for fashion solutions.
 
-- A sitemap.xml was generated using [XML-sitemaps](https://www.xml-sitemaps.com/) and seamlessly integrated into the webpage to enhance the site's classification by search engines as high-quality. Additionally, a robots.txt file was implemented for this site to further optimize its search engine visibility and performance.
+- A sitemap.xml was generated using [XML-sitemaps](https://www.xml-sitemaps.com/) and seamlessly integrated into the webpage to enhance the site's classification by search engines as high-quality. Additionally, a <strong>robots.txt</strong> file was implemented for this site to further optimize its search engine visibility and performance.
 
 
 While emphasizing the importance of mitigating keyword-stuffing, I implemented a systematic approach to curate a concise yet impactful list of appropriately aligned keywords. Initially, I meticulously crafted short-tail keywords to mirror typical user search patterns for the website.
@@ -277,8 +274,11 @@ Admins can manage user accounts and product listings to ensure a smooth navigati
 
 By prioritizing robust user authentication mechanisms, facilitating seamless interaction through CRUD operations, and implementing effective admin moderation, I aim to enhance user satisfaction and provide a secure and enjoyable shopping experience.
 
+##### Wireframe
 
 ![WIREFRAME](/media/readme/goal/wireframe.png)
+
+##### Flowchart
 
 ![FLOWCHART](/media/readme/goal/flowchart.png)
 
@@ -537,7 +537,7 @@ The full testing documentation can be found in [TESTING.md](/TESTING.md)
 
 The deployment process entails four essential steps:
 
-### Backend Database Setup (PostgreSQL)
+#### Backend Database Setup (PostgreSQL)
 
 - Create an ElephantSQL account if necessary and log in.
 - Generate a new instance, avoiding special characters in the name.
@@ -546,7 +546,7 @@ The deployment process entails four essential steps:
 - Update settings.py in your Django project accordingly.
 - Confirm connectivity by migrating database structures with manage.py commands.
 
-### Static Files Hosting Setup (AWS)
+#### Static Files Hosting Setup (AWS)
 
 - Create an AWS account if needed and log in to S3.
 - Establish a bucket with appropriate ACLs enabled.
@@ -555,7 +555,7 @@ The deployment process entails four essential steps:
 - Retrieve access keys from the generated .csv file.
 - Implement serving static files using AWS in the Django app, with environment variable configuration.
 
-### Heroku Application Setup
+##### Heroku Application Setup
 
 - Log in to Heroku and create a new app, specifying the region.
 - Connect the app to your GitHub repository.
@@ -563,20 +563,20 @@ The deployment process entails four essential steps:
 - Copy AWS access keys from the .csv file.
 - Set environment variables in Heroku's Config Vars, including secret keys and URLs.
 
-### Stripe Integration Setup
+#### Stripe Integration Setup
 
 - Create a Stripe account if required and access the Developer tab.
 - Copy both STRIPE_PUBLIC_KEY and STRIPE_SECRET_KEY from API Keys into environment variables.
 - Optionally, add STRIPE_WH_SECRET for webhook testing.
 - Securely store and extract keys in settings.py using environment variables to avoid hard-coding.
 
-### How to Fork
+#### How to Fork
 
 - Log in to GitHub and navigate to the repository.
 - Click "Main" Branch and specify the name for the forked branch.
 - Confirm by clicking "Create Branch."
 
-### How to Clone:
+#### How to Clone:
 
 - Click "Code" and copy the repository link.
 - Open the terminal and navigate to the desired folder.

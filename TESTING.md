@@ -226,21 +226,130 @@ Lastly, the admin interface underwent rigorous testing to empower administrators
 Overall, the manual testing process yielded positive results, with all test cases passing as expected. The DBZ EICHE application emerged as a reliable, user-friendly, and secure platform, ready to deliver an exceptional shopping experience to users while providing robust management capabilities for administrators.
 
 
-## Validate Responsiveness
+## Responsive Design and Browser Compatibility Testing
 
-| TEST |  ACTION  | <center>EXPECT RESULT<center/> | <center>RESULT <center/>| <center>PASS / FAIL<center/>| 
-|:-----|:--------:|----------:|----------:|----:|
-| T01   |  **Open the application on a desktop or laptop computer with a standard screen size (e.g., 15 inches or larger)** | <center>The application should display optimally, utilizing the available screen space effectively, with all elements appropriately sized and positioned</center>|<center> As expected </center>|<center> PASS</center>|
-| T02  |  **Open the application on a tablet device with a medium-sized screen (e.g., 7 to 10 inches)** | <center> The application should adapt to the smaller screen size, with elements rearranged to maintain readability and usability</center>|<center> As expected </center>|<center> PASS</center>|
-| T03  |  **Open the application on a smartphone with a small screen size (e.g., 5 to 6 inches)** | <center>The application should provide a mobile-friendly layout, with navigation, text, and interactive elements optimized for touch input and smaller screens</center>|<center> As expected </center>|<center> PASS</center>|
-| T04  |  **Access the application on a mobile device and rotate the device between portrait and landscape orientations** | <center>The application should adjust dynamically to the change in orientation, ensuring that content remains accessible and readable in both orientations</center>|<center> As expected </center>|<center> PASS</center>|
-| T05  |  **Access the application using different web browsers (e.g., Chrome, Firefox, Safari)** | <center>The application should render consistently across browsers, maintaining functionality and appearance without significant variations</center>|<center> As expected </center>|<center> PASS</center>|
+To ensure a seamless user experience across various devices and screen dimensions, rigorous testing has been conducted. The following aspects have been thoroughly examined:
 
-### Conclusion
-The responsiveness test ensures that the DBZ EICHE application delivers a consistent and user-friendly experience across different devices and screen sizes. Passing this test indicates that the application adapts effectively to varying viewing environments, enhancing accessibility and usability for all users.
+### Responsiveness Testing
+
+#### Devices
+Testing has been performed on a range of devices including smartphones, tablets, laptops, and desktop computers.
+
+#### Screen Dimensions
+Multiple screen dimensions have been evaluated to guarantee optimal layout and functionality.
+
+#### Navigation
+Navigational elements have been scrutinized to ensure accessibility and ease of use across different devices.
+
+### Browser Compatibility Testing
+
+#### Browsers Tested
+
+The application has been tested on a variety of browsers including but not limited to Chrome, Mozilla Firefox, and Safari.
+
+#### Cross-Browser Functionality:
+All core features have been verified to work consistently across different browsers, maintaining a uniform user experience.
+
+#### Conclusion
+The testing process has been comprehensive, aiming to deliver a seamless and enjoyable user experience regardless of the device or browser being used. Any detected issues have been addressed to ensure the highest quality standards.
+
+<details>
+<summary><strong>280 x 653</strong></summary>
+
+![fold](/media/readme/responsiveness/galaxyfold.png)
+
+</details>
+
+<details>
+
+<summary><strong>360 x 740</strong></summary>
+
+![samsung-s8](/media/readme/responsiveness/samsung-s8.png)
+
+</details>
+
+<details>
+
+<summary><strong>390 x 844</strong></summary>
+
+![iphone-pro](/media/readme/responsiveness/iphone12-pro.png)
+
+</details>
 
 
-## Automated Testing Report
+<details>
+
+<summary><strong>412 x 915</strong></summary>
+
+![pixel7](/media/readme/responsiveness/pixel7.png)
+
+</details>
+
+<details>
+
+<summary><strong>414 x 896</strong></summary>
+
+![iphone-max](/media/readme/responsiveness/iphone-xr.png)
+
+</details>
+
+
+<details>
+
+<summary><strong>430 x 962</strong></summary>
+
+![iphone-max](/media/readme/responsiveness/iphone-promax.png)
+
+</details>
+
+
+<details>
+
+<summary><strong>540 x 720</strong></summary>
+
+![surface-due](/media/readme/responsiveness/surface-duo.png)
+
+</details>
+
+<details>
+<summary><strong>768 x 1024</strong></summary>
+
+![mini](/media/readme/responsiveness/ipad-mini.png)
+
+</details>
+
+<details>
+<summary><strong>820 x 1080</strong></summary>
+
+![Air](/media/readme/responsiveness/ipad-air.png)
+
+</details>
+
+
+<details>
+<summary><strong>912 x 1368</strong></summary>
+
+![sufacepro](/media/readme/responsiveness/sufacepro.png)
+
+</details>
+
+<details>
+<summary><strong>1024 x 600</strong></summary>
+
+![hub](/media/readme/responsiveness/hub.png)
+
+</details>
+
+
+<details>
+<summary><strong>1024 x 1366</strong></summary>
+
+![ipad-pro](/media/readme/responsiveness/ipad-pro.png)
+
+</details>
+
+
+## Automated Testing
 
 
 ### Overview
@@ -320,16 +429,53 @@ This report provides a comprehensive overview of the unit tests executed to vali
 ![order](/media/readme/python-linter/admin-order.jpeg)
 
 
-Validator Test
+## Validator Test
+
+I utilized the [W3C HTML Validator](https://validator.w3.org/) Validator to thoroughly test all HTML code.
+
+### Issue: Error in HTML Validation for Button Element
+
+#### Description
+
+During HTML validation, errors were detected related to the presence of invalid attributes (hx-get, hx-trigger, and hx-swap) on a button element. The HTML validation report indicates that these attributes are not allowed on button elements according to HTML standards.
+
+#### Plan for Resolution
+To rectify these validation errors, the HTML code will be revised in the subsequent iteration. This will involve removing the hx-get, hx-trigger, and hx-swap attributes from the button element, or alternatively, finding alternative approaches to achieve the desired functionality while complying with HTML specifications.
+
+#### Action Items
+Review HTML specifications to ensure compliance regarding permissible attributes for button elements.
+Determine appropriate alternatives or methods for handling AJAX requests and related functionality.
+Modify the HTML code accordingly to resolve the validation errors and maintain compliance with HTML standards.
+
+![HTML](/media/readme/testing/html-checker.jpeg)
 
 I utilized the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)  Validator to thoroughly test all CSS code.
 
 ![CSS](/media/readme/testing/css-validator.jpeg)
 
 
+
 ## Accessibility
 
-I utilized Lighthouse to generate extensive reports on both performance and accessibility for the desktop and mobile versions of the site. The images below showcases the results for the Home page on desktop and mobile, respectively.
+
+I employed Lighthouse and the WAVE Web Accessibility Evaluation Tool to generate comprehensive reports assessing both performance and accessibility aspects for both desktop and mobile versions of the site.
+
+### Wave
+
+![wave](/media/readme/wave/wave-error.jpeg)
+
+![wave](/media/readme/wave/wave.png)
+
+<strong>Note:</strong> 
+
+After addressing the major issue of missing text in the cart button by removing the icon and adding the text "Add",
+there are still three remaining errors that will be tackled in the next iteration:
+
+2 instances of missing form labels.
+1 instance of an empty button.
+
+
+## Lighthouse
 
 ### Mainpage
 
